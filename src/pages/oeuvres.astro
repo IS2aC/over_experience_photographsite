@@ -1,10 +1,23 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import GalleryHeader from '../components/oeuvres/GalleryHeader.astro';
+import Bookshelf from '../components/oeuvres/Bookshelf.astro';
+import Viewer from '../components/oeuvres/Viewer.astro';
+import Archives from '../components/oeuvres/Archives.astro';
+import { CATEGORY_KEYS } from '../data/categories';
+
+const volumes = (await getCollection('oeuvres')).sort((a, b) => a.data.order - b.data.order);
+const categories = CATEGORY_KEYS.filter((c) => volumes.some((v) => v.data.categories.includes(c)));
 ---
 
-<Layout title="Œuvres · Olivier Kouassi | OverXP">
-  <!-- TODO : intégrer la vue « Œuvres » depuis la maquette Stitch -->
-  <section class="min-h-[70vh] grid place-items-center px-margin md:px-margin-tablet lg:px-margin-desktop">
-    <h1 class="font-display-xl text-display-xl-mobile md:text-display-xl uppercase text-gold-gradient">Œuvres</h1>
-  </section>
+<Layout title="Œuvres · Olivier Kouassi | OverXP" description="La bibliothèque visuelle d'Olivier Kouassi : séries photographiques, architecture, culture et portraits — Abidjan, Côte d'Ivoire.">
+  <GalleryHeader categories={categories} />
+  <Bookshelf volumes={volumes} />
+  <Archives volumes={volumes} />
+  <Viewer volumes={volumes} />
 </Layout>
+
+<script>
+  import '../scripts/gallery';
+</script>

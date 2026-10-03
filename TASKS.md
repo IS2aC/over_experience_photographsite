@@ -32,17 +32,22 @@ npm run build    # sortie statique dans dist/
 - [ ] Remplacer les photos de démo Stitch (L'Or d'Assinie, Couronnement d'amour) par de vraies œuvres
 - [ ] Valider les textes et chiffres (+500 séances, +10 ans, +300 clients)
 
-## 2. Œuvres (`/oeuvres`)
+## 2. Œuvres (`/oeuvres`) ✅
 
-- [ ] Galerie / dossiers photo (cartes 4:5, barre EXIF)
-- [ ] Filtres par catégorie (chips)
-- [ ] Lightbox
-- [ ] Données des œuvres dans une content collection (`src/content/`) pour ajouter des photos sans toucher au code
+- [x] En-tête éditorial + onglets de filtre (générés depuis les catégories réellement utilisées)
+- [x] Étagère 3D : un livre = une série (texture de la tranche = photo de couverture)
+- [x] Visionneuse plein écran (`<dialog>` accessible) : clavier ←/→/Échap, balayage tactile, préchargement, EXIF
+- [x] Grille « Archives & expositions » + CTA tirages d'art
+- [x] Content collection `src/content/oeuvres/*.yaml` : ajouter une série = déposer les photos + un fichier YAML
+- [x] Vraies photos d'Olivier (`me/oeuvres/`) : séries Yamoussoukro (23/12/2024) et Abidjan Plateau (27/12/2024)
+- [ ] Remplacer les séries démo (`demo: true` : Souveraine d'Assinie, Épousailles Royales, L'Œil du Créateur)
+- [ ] Valider titres / textes des séries réelles
 
 ## 3. Contact (`/contact`)
 
 - [ ] Intégration de la maquette
 - [ ] Formulaire sans backend (à choisir : Formspree / Web3Forms / Netlify Forms)
+- [ ] Pré-remplir le sujet depuis `?sujet=tirage&oeuvre=…` (liens « Commander ce tirage » de la galerie)
 - [ ] Liens réseaux, e-mail, WhatsApp
 
 ## 4. Réserver (`/reserver`)

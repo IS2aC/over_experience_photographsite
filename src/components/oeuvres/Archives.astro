@@ -1,0 +1,91 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  volumes: CollectionEntry<'oeuvres'>[];
+}
+
+const volumes = Astro.props.volumes.filter((v) => v.data.archive).slice(0, 3);
+---
+
+<section class="w-full px-margin md:px-margin-tablet lg:px-margin-desktop py-space-2xl bg-surface">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-space-xl items-end" data-reveal>
+    <div class="lg:col-span-7 flex flex-col">
+      <span class="font-label-technical text-label-technical text-primary tracking-[0.35em] uppercase mb-1">Dossiers &amp; séries</span>
+      <h2 class="font-headline-lg text-headline-sm md:text-headline-md lg:text-headline-lg text-text-ivory uppercase">Archives &amp; expositions</h2>
+    </div>
+    <div class="lg:col-span-5 flex items-center justify-start lg:justify-end gap-2">
+      <span class="material-symbols-outlined text-primary text-lg">verified</span>
+      <span class="font-label-technical text-label-technical text-on-surface-variant uppercase tracking-widest">Sélections 2024–2026</span>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+    {
+      volumes.map((v) => {
+        const cover = v.data.photos[0];
+        const archive = v.data.archive!;
+        return (
+          <article class="bg-surface-warm border border-border-gold-subtle rounded-DEFAULT overflow-hidden group hover:border-primary transition-all duration-500 flex flex-col justify-between" data-reveal>
+            <div class="relative w-full aspect-[4/5] overflow-hidden bg-surface-container-lowest">
+              <Image
+                src={cover.src}
+                alt={cover.alt}
+                widths={[480, 720, 960]}
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                class:list={['w-full h-full object-cover group-hover:scale-105 transition-transform duration-700', cover.grayscale && 'grayscale contrast-125']}
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-surface-warm via-transparent to-transparent opacity-70" />
+              <div class="absolute top-3 right-3 px-2 py-1 bg-surface-container-lowest/80 backdrop-blur-md rounded-DEFAULT border border-border-gold-subtle font-label-technical text-[9px] text-primary tracking-widest uppercase">
+                {archive.badge}
+              </div>
+              <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-2 text-studio-white font-label-timecode text-[11px] uppercase">
+                <span>{archive.tags[0]}</span>
+                <span>{archive.tags[1]}</span>
+              </div>
+            </div>
+            <div class="p-space-md flex flex-col flex-1 justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-1 gap-2">
+                  <span class="font-label-technical text-label-technical text-primary tracking-[0.25em] uppercase">{v.data.categoryLabel}</span>
+                  <span class="font-label-timecode text-label-timecode text-outline uppercase shrink-0">{archive.date}</span>
+                </div>
+                <h3 class="font-title-md text-title-md text-text-ivory uppercase group-hover:text-primary transition-colors">{v.data.title}</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-2 line-clamp-3">{v.data.description}</p>
+              </div>
+              <div class="mt-space-md pt-space-xs border-t border-track-subtle flex items-center justify-between gap-2">
+                <span class="font-label-technical text-[10px] text-outline tracking-wider uppercase">
+                  {v.data.photos.length} {v.data.photos.length > 1 ? 'planches' : 'planche'}
+                </span>
+                <button type="button" class="text-primary hover:text-gold-light font-label-technical text-[10px] tracking-widest uppercase flex items-center gap-1" data-open-volume={v.id}>
+                  Voir la série <span class="material-symbols-outlined text-xs">arrow_outward</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        );
+      })
+    }
+  </div>
+
+  <!-- CTA acquisition -->
+  <div class="mt-space-2xl w-full p-space-lg md:p-space-xl bg-surface-raised border border-border-gold-subtle rounded-DEFAULT flex flex-col md:flex-row items-center justify-between gap-space-lg relative overflow-hidden" data-reveal>
+    <div class="absolute -right-16 -bottom-16 w-64 h-64 bg-primary/5 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="flex flex-col max-w-xl">
+      <span class="font-label-technical text-label-technical text-primary tracking-[0.35em] uppercase mb-1">Acquisition &amp; commandes spéciales</span>
+      <h3 class="font-headline-sm text-headline-sm text-text-ivory uppercase">Souhaitez-vous acquérir un tirage d'art numéroté ?</h3>
+      <p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+        Chaque tirage est numéroté, signé par Olivier Kouassi et accompagné de son certificat d'authenticité.
+      </p>
+    </div>
+    <div class="flex flex-col sm:flex-row items-center gap-space-md shrink-0 w-full md:w-auto">
+      <a class="w-full sm:w-auto text-center px-6 py-3 border border-border-gold-subtle bg-surface-warm font-label-technical text-label-technical text-text-ivory hover:text-primary hover:border-primary uppercase tracking-[0.25em] transition-all" href="/contact?sujet=tirage">
+        Demander le catalogue
+      </a>
+      <a class="w-full sm:w-auto text-center px-6 py-3 bg-gold-gradient text-on-primary font-label-technical text-label-technical font-bold uppercase tracking-[0.25em] transition-all hover:shadow-[0_0_20px_rgba(212,162,76,0.35)]" href="/reserver">
+        Réserver une séance
+      </a>
+    </div>
+  </div>
+</section>

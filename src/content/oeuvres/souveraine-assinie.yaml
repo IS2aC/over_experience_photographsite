@@ -1,0 +1,23 @@
+# Série de démonstration (image générée par la maquette Stitch) — à remplacer
+order: 3
+title: Souveraine d'Assinie
+spine: Souveraine d'Assinie
+subtitle: Haute couture & orfèvrerie akan
+categories: [mode, culture]
+categoryLabel: Mode · Haute couture
+year: 2026
+location: Assinie · Côte d'Ivoire
+client: Maison OverXP
+description: >-
+  Une exploration somptueuse des étoffes lamées or inspirées de la tradition baoulé,
+  capturée au crépuscule d'Assinie face au cordon lagunaire.
+accent: primary
+demo: true
+archive:
+  badge: Mode & héritage
+  date: Mars 2026
+  tags: [Assinie, Anamorphic tone]
+photos:
+  - src: ./images/oeuvre-or-assinie.jpg
+    title: L'Or d'Assinie
+    alt: Femme en robe dorée et parures d'or sur une terrasse au crépuscule

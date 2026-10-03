@@ -1,0 +1,30 @@
+order: 1
+title: Yamoussoukro, Dôme & Lumière
+spine: Dôme & Lumière
+subtitle: Basilique Notre-Dame de la Paix & rues de la capitale
+categories: [architecture, culture]
+categoryLabel: Architecture · Patrimoine
+year: 2024
+location: Yamoussoukro · Côte d'Ivoire
+client: Projet personnel · Studio OverXP
+description: >-
+  Une déambulation entre la colonnade monumentale de la basilique et le rythme ordinaire de la ville.
+  Le noir et blanc isole l'or des pierres, comme une relique éclairée au milieu du gris de l'harmattan.
+accent: primary
+archive:
+  badge: Série originale
+  date: Déc 2024
+  tags: [Yamoussoukro · Côte d'Ivoire, Color key]
+photos:
+  - src: ./images/yamoussoukro-basilique-dome.jpg
+    title: Le Dôme
+    alt: Dôme doré de la basilique Notre-Dame de la Paix de Yamoussoukro, encadré par un pilier sombre sur ciel gris
+    exif: iPhone 12 Pro · 52mm · f/2 · 1/1150s · ISO 25
+  - src: ./images/yamoussoukro-basilique-colonnade.jpg
+    title: La Colonnade
+    alt: Basilique de Yamoussoukro vue entre deux colonnes en noir et blanc, la façade restée dorée
+    exif: iPhone 12 Pro · 52mm · f/2 · 1/620s · ISO 25
+  - src: ./images/yamoussoukro-taxi.jpg
+    title: Heure blanche
+    alt: Taxi blanc à bandes rouge et verte sur une avenue de Yamoussoukro sous un soleil voilé
+    exif: iPhone 13 · 26mm · f/1.6 · 1/3000s · ISO 50

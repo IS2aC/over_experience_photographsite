@@ -1,0 +1,18 @@
+# Portrait d'Olivier Kouassi (photo fournie) — série à compléter
+order: 5
+title: L'Œil du Créateur
+spine: L'Œil du Créateur
+subtitle: Autoportrait & géométrie du regard
+categories: [portraits]
+categoryLabel: Portrait d'auteur
+year: 2025
+location: Studio OverXP · Abidjan
+description: >-
+  Étude monochrome sur la géométrie des mains et la physicalité de l'obturateur mécanique.
+accent: secondary
+demo: true
+photos:
+  - src: ./images/olivier-kouassi.jpg
+    title: La Cadrature du Regard
+    alt: Olivier Kouassi en noir et blanc cadrant avec sa main, appareil photo devant le visage
+    grayscale: true

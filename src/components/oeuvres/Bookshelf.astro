@@ -1,0 +1,97 @@
+---
+import { getImage } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  volumes: CollectionEntry<'oeuvres'>[];
+}
+
+const { volumes } = Astro.props;
+
+const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+const accents = {
+  primary: { text: 'text-primary', hover: 'group-hover:text-primary', dot: 'bg-primary/70', bg: 'bg-surface-warm' },
+  tertiary: { text: 'text-tertiary', hover: 'group-hover:text-tertiary', dot: 'bg-tertiary', bg: 'bg-surface-raised' },
+  secondary: { text: 'text-secondary', hover: 'group-hover:text-secondary', dot: 'bg-secondary', bg: 'bg-surface-warm' },
+};
+
+// Texture de la tranche : la couverture du volume, en petit
+const spines = await Promise.all(
+  volumes.map(async (v) => ({
+    v,
+    texture: (await getImage({ src: v.data.photos[0].src, width: 240, format: 'webp', quality: 60 })).src,
+  })),
+);
+---
+
+<section class="relative w-full py-space-xl bg-surface-container-lowest overflow-hidden select-none">
+  <!-- Éclairage de galerie -->
+  <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[800px] h-48 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="px-margin md:px-margin-tablet lg:px-margin-desktop mb-space-md flex flex-col md:flex-row md:items-end justify-between gap-space-md" data-reveal>
+    <div>
+      <div class="flex items-center gap-space-xs text-primary font-label-technical text-label-technical tracking-[0.3em] uppercase">
+        <span class="material-symbols-outlined text-sm">auto_stories</span>
+        <span>Étagère monographique interactive</span>
+      </div>
+      <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+        Sélectionnez un volume pour extraire la monographie et parcourir ses tirages haute définition.
+      </p>
+    </div>
+    <div class="flex items-center gap-space-sm self-end md:self-auto">
+      <button type="button" aria-label="Défiler vers la gauche" class="w-10 h-10 rounded-DEFAULT border border-border-gold-subtle bg-surface-warm/80 hover:border-primary text-text-ivory hover:text-primary transition-all flex items-center justify-center" id="shelf-prev">
+        <span class="material-symbols-outlined text-lg">arrow_back</span>
+      </button>
+      <div class="h-4 w-px bg-border-gold-subtle"></div>
+      <button type="button" aria-label="Défiler vers la droite" class="w-10 h-10 rounded-DEFAULT border border-border-gold-subtle bg-surface-warm/80 hover:border-primary text-text-ivory hover:text-primary transition-all flex items-center justify-center" id="shelf-next">
+        <span class="material-symbols-outlined text-lg">arrow_forward</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Scène 3D -->
+  <div class="relative w-full px-margin md:px-margin-tablet lg:px-margin-desktop pt-space-lg [perspective:1400px]">
+    <div class="flex items-end justify-center-safe gap-3 md:gap-5 overflow-x-auto pt-12 pb-6 px-4 scroll-smooth [scrollbar-width:none]" id="bookshelf-track">
+      {
+        spines.map(({ v, texture }, i) => {
+          const a = accents[v.data.accent];
+          const n = String(i + 1).padStart(2, '0');
+          return (
+            <button
+              type="button"
+              class="book-spine shrink-0 w-20 md:w-24 h-96 relative group cursor-pointer transition-all duration-500 [transform-style:preserve-3d] hover:-translate-y-6 hover:scale-105 focus-visible:-translate-y-6 focus-visible:outline-none"
+              data-volume={v.id}
+              data-categories={v.data.categories.join(' ')}
+              aria-label={`Ouvrir le volume ${n} : ${v.data.title}`}
+            >
+              <div class:list={['w-full h-full border border-border-gold-subtle group-hover:border-primary group-focus-visible:border-primary group-hover:shadow-[0_0_25px_rgba(212,162,76,0.35)] rounded-DEFAULT flex flex-col justify-between p-3 relative overflow-hidden transition-all duration-300', a.bg]}>
+                <div class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity group-hover:opacity-50 transition-opacity" style={`background-image: url('${texture}')`} />
+                <div class="relative z-10 flex items-center justify-between">
+                  <span class:list={['font-label-technical text-[9px] tracking-widest', a.text]}>N°{n}</span>
+                  <span class:list={['w-1.5 h-1.5 rounded-full', a.dot]} />
+                </div>
+                <div class="relative z-10 [writing-mode:vertical-rl] rotate-180 flex items-center justify-center my-auto">
+                  <span class:list={['font-headline-sm text-sm font-semibold tracking-[0.25em] text-text-ivory uppercase transition-colors', a.hover]}>{v.data.spine}</span>
+                </div>
+                <div class="relative z-10 flex flex-col items-center gap-1 border-t border-border-gold-subtle pt-2">
+                  <span class="font-label-timecode text-[9px] text-outline">{v.data.year}</span>
+                  <span class:list={['font-label-technical text-[8px] tracking-tighter', a.text]}>VOL.{ROMAN[i] ?? i + 1}</span>
+                </div>
+              </div>
+              <div class="absolute -bottom-4 left-0 w-full h-2 bg-gradient-to-b from-primary/30 to-transparent blur-sm opacity-0 group-hover:opacity-100 transition-opacity" />
+            </button>
+          );
+        })
+      }
+    </div>
+
+    <!-- Étagère : LED muséale + tablette ébène -->
+    <div class="relative w-full">
+      <div class="w-full h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent shadow-[0_0_20px_rgba(212,162,76,0.9)]"></div>
+      <div class="w-full h-5 bg-gradient-to-b from-surface-raised via-surface-warm to-surface-container-lowest border-t border-border-gold-subtle flex items-center justify-between px-6">
+        <span class="font-label-technical text-[8px] text-primary/40 tracking-[0.4em] uppercase truncate">Étage principal // OverXP fine art repository</span>
+        <span class="hidden sm:inline font-label-timecode text-[8px] text-outline tracking-widest">ARCHIVE {new Date().getFullYear()}</span>
+      </div>
+    </div>
+  </div>
+</section>

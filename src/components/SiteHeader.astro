@@ -55,7 +55,7 @@ const { pathname } = Astro.url;
   </div>
 
   <div
-    class="fixed inset-0 min-h-screen w-full bg-surface-container-lowest/98 backdrop-blur-2xl z-50 flex flex-col justify-between px-margin py-margin-desktop transition-all duration-500 opacity-0 pointer-events-none -translate-y-4"
+    class="fixed inset-0 min-h-screen w-full bg-surface-container-lowest/98 backdrop-blur-2xl z-50 flex flex-col justify-between px-margin py-margin-desktop transition-all duration-500 opacity-0 invisible pointer-events-none -translate-y-4"
     id="mobile-nav-panel"
   >
     <div class="flex items-center justify-between w-full border-b border-border-gold-subtle pb-space-md">
@@ -113,6 +113,7 @@ const { pathname } = Astro.url;
 
     const toggleMenu = (show: boolean) => {
       panel.classList.toggle('opacity-0', !show);
+      panel.classList.toggle('invisible', !show);
       panel.classList.toggle('pointer-events-none', !show);
       panel.classList.toggle('-translate-y-4', !show);
       trigger.setAttribute('aria-expanded', String(show));

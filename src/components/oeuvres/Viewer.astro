@@ -1,0 +1,117 @@
+---
+import { getImage } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  volumes: CollectionEntry<'oeuvres'>[];
+}
+
+const { volumes } = Astro.props;
+
+// Données de la visionneuse : images optimisées (srcset) sérialisées pour le script client
+const data = await Promise.all(
+  volumes.map(async (v) => ({
+    id: v.id,
+    title: v.data.title,
+    subtitle: v.data.subtitle,
+    categoryLabel: v.data.categoryLabel,
+    categories: v.data.categories,
+    year: v.data.year,
+    location: v.data.location,
+    client: v.data.client,
+    description: v.data.description,
+    photos: await Promise.all(
+      v.data.photos.map(async (p) => {
+        const img = await getImage({ src: p.src, widths: [800, 1200, 1800], format: 'webp' });
+        return {
+          src: img.src,
+          srcset: img.srcSet.attribute,
+          width: p.src.width,
+          height: p.src.height,
+          alt: p.alt,
+          title: p.title,
+          exif: p.exif ?? '',
+          grayscale: p.grayscale,
+        };
+      }),
+    ),
+  })),
+);
+---
+
+<dialog
+  id="viewer"
+  aria-labelledby="viewer-title"
+  class="fixed inset-0 m-0 w-full h-full max-w-none max-h-none p-4 md:p-14 bg-surface-container-lowest/95 backdrop-blur-2xl text-on-surface overflow-y-auto open:flex items-center-safe justify-center backdrop:bg-transparent"
+>
+  <!-- Réticules HUD -->
+  <div class="absolute top-6 left-6 pointer-events-none text-primary/40 font-label-timecode text-label-timecode tracking-widest hidden md:flex items-center gap-2">
+    <span class="material-symbols-outlined text-sm">fullscreen</span>
+    <span>VIEWFINDER 4K · AF-ON</span>
+  </div>
+  <div class="absolute top-6 right-20 pointer-events-none text-primary/40 font-label-technical text-label-technical tracking-widest hidden lg:block">COLOR PROFILE: LIGHTROOM / 16-BIT RAW</div>
+
+  <button type="button" aria-label="Fermer la visionneuse" class="absolute top-4 right-4 md:top-6 md:right-6 z-20 w-11 h-11 rounded-DEFAULT border border-border-gold-subtle bg-surface-warm hover:border-primary text-text-ivory hover:text-primary transition-all flex items-center justify-center" data-viewer-close>
+    <span class="material-symbols-outlined text-xl">close</span>
+  </button>
+
+  <div class="viewer-panel relative w-full max-w-6xl lg:h-[min(860px,calc(100vh-7rem))] bg-surface-warm border border-border-gold-subtle rounded-DEFAULT shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-[minmax(0,1fr)] mt-12 md:mt-0">
+    <!-- Photo (7 colonnes) -->
+    <div class="lg:col-span-7 relative bg-surface-container-lowest flex items-center justify-center h-[60vh] lg:h-full min-h-0 p-4 lg:p-6">
+      <img id="viewer-img" alt="" class="max-h-full max-w-full w-auto h-auto object-contain transition-opacity duration-300" />
+      <div class="absolute inset-0 pointer-events-none border border-border-gold-subtle/40"></div>
+      <div class="absolute bottom-4 left-4 z-10 flex items-center gap-2 px-3 py-1 bg-surface-warm/80 backdrop-blur-md rounded-DEFAULT border border-border-gold-subtle text-primary font-label-timecode text-label-timecode">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+        <span id="viewer-index">01 / 01</span>
+      </div>
+    </div>
+
+    <!-- Dossier technique (5 colonnes) -->
+    <div class="lg:col-span-5 p-space-md lg:p-space-lg flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-border-gold-subtle bg-surface lg:overflow-y-auto">
+      <div class="flex flex-col">
+        <div class="flex items-center justify-between pb-space-xs border-b border-track-subtle mb-space-sm">
+          <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase" id="viewer-category"></span>
+          <span class="font-label-timecode text-label-timecode text-outline tracking-widest" id="viewer-year"></span>
+        </div>
+        <h2 class="font-headline-md text-headline-sm lg:text-headline-md text-text-ivory uppercase" id="viewer-title"></h2>
+        <p class="font-title-md text-body-md text-gold-light italic font-light mt-1" id="viewer-sub"></p>
+
+        <div class="my-space-md pt-space-xs border-t border-track-subtle flex flex-col gap-space-sm">
+          <span class="font-label-technical text-label-technical text-text-ivory tracking-[0.25em] uppercase" id="viewer-photo-title"></span>
+          <p class="font-body-md text-body-md text-on-surface-variant" id="viewer-desc"></p>
+        </div>
+
+        <div class="bg-surface-warm/70 p-3 rounded-DEFAULT border border-border-gold-subtle flex flex-col gap-1.5 mt-2">
+          <div class="flex items-center justify-between gap-space-sm text-[11px] font-label-technical uppercase">
+            <span class="text-outline tracking-wider shrink-0">Lieu :</span>
+            <span class="text-text-ivory font-medium text-right" id="viewer-location"></span>
+          </div>
+          <div class="flex items-center justify-between gap-space-sm text-[11px] font-label-technical uppercase">
+            <span class="text-outline tracking-wider shrink-0">Commanditaire :</span>
+            <span class="text-text-ivory font-medium text-right" id="viewer-client"></span>
+          </div>
+          <div class="flex items-center justify-between gap-space-sm text-[11px] font-label-technical uppercase" id="viewer-exif-row">
+            <span class="text-outline tracking-wider shrink-0">EXIF optique :</span>
+            <span class="text-primary text-right" id="viewer-exif"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-space-md border-t border-track-subtle mt-space-md flex items-center justify-between gap-space-sm">
+        <div class="flex items-center gap-space-xs">
+          <button type="button" aria-label="Photo précédente" class="w-10 h-10 rounded-DEFAULT border border-border-gold-subtle hover:border-primary text-text-ivory hover:text-primary transition-all flex items-center justify-center" data-viewer-prev>
+            <span class="material-symbols-outlined text-lg">arrow_back</span>
+          </button>
+          <button type="button" aria-label="Photo suivante" class="w-10 h-10 rounded-DEFAULT border border-border-gold-subtle hover:border-primary text-text-ivory hover:text-primary transition-all flex items-center justify-center" data-viewer-next>
+            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          </button>
+        </div>
+        <a id="viewer-order" href="/contact" class="px-5 py-2.5 bg-gold-gradient text-on-primary font-label-technical text-label-technical uppercase tracking-[0.25em] font-bold rounded-DEFAULT hover:shadow-[0_0_20px_rgba(212,162,76,0.35)] transition-all text-center">
+          Commander ce tirage
+        </a>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script type="application/json" id="viewer-data" set:html={JSON.stringify(data)} />

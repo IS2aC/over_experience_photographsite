@@ -1,0 +1,19 @@
+# Série de démonstration (image générée par la maquette Stitch) — à remplacer
+order: 4
+title: Épousailles Royales à Grand-Bassam
+spine: Épousailles Royales
+subtitle: Union traditionnelle & parures royales
+categories: [mariages, culture]
+categoryLabel: Mariages de prestige
+year: 2025
+location: Grand-Bassam · Côte d'Ivoire
+client: Commande privée
+description: >-
+  Le couronnement visuel d'une alliance ancestrale. Le couple porte le kita tissé main
+  rehaussé de perles d'or, baigné dans la lumière d'ambre d'un coucher de soleil lagunaire.
+accent: tertiary
+demo: true
+photos:
+  - src: ./images/oeuvre-couronnement.jpg
+    title: Couronnement d'amour
+    alt: Couple en tenue traditionnelle kita et parures d'or au coucher du soleil
