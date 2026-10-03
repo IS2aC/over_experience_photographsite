@@ -1,0 +1,105 @@
+---
+import { Image } from 'astro:assets';
+import orAssinie from '../../assets/home/oeuvre-or-assinie.jpg';
+import couronnement from '../../assets/home/oeuvre-couronnement.jpg';
+import oeilCreateur from '../../assets/home/olivier-kouassi.jpg';
+
+const side = [
+  {
+    img: couronnement, alt: "Couronnement d'amour — mariage royal à Grand-Bassam, Olivier Kouassi OverXP", position: 'object-top', imgClass: '',
+    tag: 'Mariage noble · Cérémonial', tagColor: 'text-gold-light',
+    kicker: 'Cour royale', kickerColor: 'text-secondary', title: "Couronnement d'amour",
+    caption: 'Parures en or massif & kita ancestral', place: 'Grand-Bassam',
+  },
+  {
+    img: oeilCreateur, alt: "L'Œil du Créateur — portrait d'Olivier Kouassi", position: 'object-center', imgClass: 'grayscale contrast-110',
+    tag: "Portrait d'auteur", tagColor: 'text-primary',
+    kicker: 'Mémoire vivante', kickerColor: 'text-primary', title: "L'Œil du Créateur",
+    caption: 'Regard directionnel & héritage', place: 'Studio OverXP',
+  },
+];
+---
+
+<section class="w-full bg-surface py-space-2xl px-margin md:px-margin-tablet lg:px-margin-desktop">
+  <div class="max-w-7xl mx-auto flex flex-col gap-space-xl">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md" data-reveal>
+      <div class="flex flex-col gap-space-xs">
+        <div class="flex items-center gap-space-xs">
+          <span class="w-6 h-px bg-primary"></span>
+          <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Portfolio sélectif</span>
+        </div>
+        <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-md text-text-ivory font-bold uppercase">Œuvres choisies</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+          Des séries photographiques conçues comme des manifestes visuels, célébrant l'opulence et la grâce des civilisations ivoiriennes.
+        </p>
+      </div>
+      <a class="inline-flex items-center gap-space-xs font-label-technical text-label-technical text-primary hover:text-gold-light tracking-[0.25em] uppercase transition-colors self-start md:self-auto pb-1 border-b border-primary/50" href="/oeuvres">
+        Explorer la galerie complète
+        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-stretch">
+      <!-- Œuvre principale (7 colonnes) -->
+      <article class="lg:col-span-7 flex flex-col bg-surface-warm rounded-DEFAULT border border-border-gold-subtle overflow-hidden group" data-reveal>
+        <div class="relative w-full h-[520px] md:h-[620px] overflow-hidden bg-surface-container-lowest">
+          <Image
+            src={orAssinie}
+            alt="L'Or d'Assinie — haute couture ivoirienne, Olivier Kouassi OverXP"
+            widths={[480, 720, 896]}
+            sizes="(min-width: 1024px) 58vw, 100vw"
+            class="w-full h-full object-cover object-center brightness-95 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-surface-warm via-transparent to-transparent opacity-80"></div>
+          <div class="absolute top-4 left-4 bg-surface-container-lowest/80 backdrop-blur-md px-3 py-1.5 rounded-DEFAULT border border-border-gold-subtle">
+            <span class="font-label-technical text-[10px] text-primary tracking-widest uppercase">Série Assinie Lumière · No. 04</span>
+          </div>
+          <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+            <div class="flex flex-col">
+              <span class="font-label-timecode text-label-timecode text-primary tracking-[0.25em] uppercase">Haute couture ivoirienne</span>
+              <h3 class="font-headline-sm text-headline-sm text-text-ivory font-bold uppercase">L'Or d'Assinie</h3>
+            </div>
+            <span class="font-label-timecode text-[11px] text-outline tracking-wider bg-surface-container-lowest/90 px-2.5 py-1">ISO 100 · 85MM</span>
+          </div>
+        </div>
+        <div class="p-space-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm border-t border-track-subtle">
+          <p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">
+            Étude de réflexion dorée et de draperies solaires sur peau satinée. Hommage aux reines côtières de Grand-Bassam et d'Assinie.
+          </p>
+          <a class="font-label-technical text-label-technical text-text-ivory hover:text-primary tracking-[0.2em] uppercase shrink-0" href="/oeuvres">Voir le dossier →</a>
+        </div>
+      </article>
+
+      <!-- Colonne droite : 2 œuvres empilées (5 colonnes) -->
+      <div class="lg:col-span-5 flex flex-col gap-gutter justify-between">
+        {
+          side.map((w) => (
+            <article class="flex flex-col bg-surface-warm rounded-DEFAULT border border-border-gold-subtle overflow-hidden group" data-reveal>
+              <div class="relative w-full h-[280px] md:h-[320px] overflow-hidden bg-surface-container-lowest">
+                <Image
+                  src={w.img}
+                  alt={w.alt}
+                  widths={[480, 720, 960]}
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  class:list={['w-full h-full object-cover group-hover:scale-105 transition-transform duration-700', w.position, w.imgClass]}
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-surface-warm via-transparent to-transparent opacity-80" />
+                <div class="absolute top-3 left-3 bg-surface-container-lowest/80 backdrop-blur-md px-2.5 py-1 rounded-DEFAULT border border-border-gold-subtle">
+                  <span class:list={['font-label-technical text-[10px] tracking-widest uppercase', w.tagColor]}>{w.tag}</span>
+                </div>
+                <div class="absolute bottom-3 left-3">
+                  <span class:list={['font-label-timecode text-label-timecode tracking-[0.2em] uppercase', w.kickerColor]}>{w.kicker}</span>
+                  <h3 class="font-title-md text-title-md text-text-ivory font-bold uppercase">{w.title}</h3>
+                </div>
+              </div>
+              <div class="p-space-sm px-space-md flex items-center justify-between gap-space-sm border-t border-track-subtle">
+                <span class="font-label-timecode text-label-timecode text-on-surface-variant uppercase">{w.caption}</span>
+                <span class="font-label-technical text-[10px] text-primary tracking-widest uppercase shrink-0">{w.place}</span>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

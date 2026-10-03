@@ -1,0 +1,124 @@
+---
+import { Image } from 'astro:assets';
+import emblem from '../assets/overxp-emblem.png';
+import { NAV, isActive } from '../data/nav';
+
+const { pathname } = Astro.url;
+---
+
+<header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl border-b border-border-gold-subtle">
+  <div class="h-20 w-full px-margin md:px-margin-tablet lg:px-margin-desktop flex items-center justify-between">
+    <a class="flex items-center gap-space-sm group" href="/">
+      <Image src={emblem} alt="" width={96} height={96} loading="eager" class="w-12 h-12 shrink-0 object-contain drop-shadow-[0_0_8px_rgba(212,162,76,0.35)] transition-transform duration-500 group-hover:scale-105" />
+      <div class="flex flex-col">
+        <span class="font-label-technical text-label-technical text-text-ivory tracking-[0.35em] uppercase font-bold">OVERXP</span>
+        <span class="font-label-timecode text-label-timecode text-on-surface-variant tracking-[0.2em] uppercase -mt-0.5">OLIVIER KOUASSI</span>
+      </div>
+    </a>
+
+    <div class="flex items-center gap-space-lg">
+      <nav class="hidden md:flex items-center gap-space-lg" aria-label="Navigation principale">
+        {
+          NAV.map(({ href, label }) => {
+            const active = isActive(href, pathname);
+            return (
+              <a
+                href={href}
+                aria-current={active ? 'page' : undefined}
+                class:list={[
+                  'font-label-technical text-label-technical tracking-[0.25em] uppercase transition-colors duration-200',
+                  active ? 'text-primary font-semibold border-b border-primary pb-0.5' : 'text-on-surface-variant hover:text-studio-white',
+                ]}
+              >
+                {label}
+              </a>
+            );
+          })
+        }
+      </nav>
+      <a
+        class="hidden md:inline-flex px-space-md py-2 border border-border-gold-subtle rounded-DEFAULT bg-surface-warm/80 backdrop-blur-md font-label-technical text-label-technical text-text-ivory tracking-[0.25em] uppercase hover:border-primary hover:text-studio-white hover:shadow-[0_0_15px_rgba(212,162,76,0.3)] transition-all duration-300"
+        href="/reserver"
+      >
+        Réserver une session
+      </a>
+      <button
+        aria-label="Ouvrir le menu"
+        aria-controls="mobile-nav-panel"
+        aria-expanded="false"
+        class="md:hidden flex items-center justify-center w-10 h-10 text-on-surface hover:text-primary transition-colors"
+        id="mobile-menu-trigger"
+      >
+        <span class="material-symbols-outlined text-2xl">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="fixed inset-0 min-h-screen w-full bg-surface-container-lowest/98 backdrop-blur-2xl z-50 flex flex-col justify-between px-margin py-margin-desktop transition-all duration-500 opacity-0 pointer-events-none -translate-y-4"
+    id="mobile-nav-panel"
+  >
+    <div class="flex items-center justify-between w-full border-b border-border-gold-subtle pb-space-md">
+      <div class="flex items-center gap-space-sm">
+        <Image src={emblem} alt="" width={80} height={80} class="w-10 h-10 shrink-0 object-contain" />
+        <span class="font-label-technical text-label-technical text-text-ivory tracking-[0.3em] uppercase">OverXP · Olivier Kouassi</span>
+      </div>
+      <button aria-label="Fermer le menu" class="w-10 h-10 flex items-center justify-center text-on-surface hover:text-primary transition-colors" id="mobile-menu-close">
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+    </div>
+    <div class="flex flex-col gap-space-lg my-auto">
+      <nav class="flex flex-col gap-space-lg" aria-label="Navigation mobile">
+        {
+          NAV.map(({ href, label }) => {
+            const active = isActive(href, pathname);
+            return (
+              <a
+                href={href}
+                aria-current={active ? 'page' : undefined}
+                class:list={[
+                  'mobile-link font-title-md text-title-md tracking-[0.2em] uppercase transition-colors',
+                  active ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-studio-white',
+                ]}
+              >
+                {label}
+              </a>
+            );
+          })
+        }
+      </nav>
+      <div class="pt-space-md flex flex-col gap-space-md">
+        <a
+          class="mobile-link w-full text-center py-3 border border-border-gold-subtle rounded-DEFAULT font-label-technical text-label-technical text-text-ivory tracking-[0.25em] uppercase bg-surface-warm hover:border-primary transition-colors"
+          href="/reserver"
+        >
+          Réserver une séance
+        </a>
+        <span class="font-label-timecode text-label-timecode text-on-surface-variant uppercase tracking-[0.2em]">Directeur Visuel &amp; Photographe · Abidjan</span>
+      </div>
+    </div>
+    <div class="border-t border-border-gold-subtle pt-space-md">
+      <p class="font-label-timecode text-label-timecode text-outline uppercase tracking-[0.25em]">Every pixel, a tribute to our culture</p>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Le header est ré-rendu à chaque navigation : on rebranche le menu mobile sur astro:page-load.
+  document.addEventListener('astro:page-load', () => {
+    const trigger = document.getElementById('mobile-menu-trigger');
+    const closeBtn = document.getElementById('mobile-menu-close');
+    const panel = document.getElementById('mobile-nav-panel');
+    if (!trigger || !closeBtn || !panel) return;
+
+    const toggleMenu = (show: boolean) => {
+      panel.classList.toggle('opacity-0', !show);
+      panel.classList.toggle('pointer-events-none', !show);
+      panel.classList.toggle('-translate-y-4', !show);
+      trigger.setAttribute('aria-expanded', String(show));
+    };
+    trigger.addEventListener('click', () => toggleMenu(true));
+    closeBtn.addEventListener('click', () => toggleMenu(false));
+    panel.querySelectorAll('.mobile-link').forEach((l) => l.addEventListener('click', () => toggleMenu(false)));
+  });
+</script>

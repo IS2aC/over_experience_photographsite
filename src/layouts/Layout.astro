@@ -1,0 +1,43 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import Loader from '../components/Loader.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'OverXP — Olivier Kouassi, photographe auteur à Abidjan. Portrait, haute couture et mémoires visuelles panafricaines.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0d0d0d" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block" rel="stylesheet" />
+    <!-- Le loader masque déjà le changement de page : pas d'animation de view transition en plus -->
+    <ClientRouter fallback="none" />
+  </head>
+  <body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary" transition:animate="none">
+    <Loader />
+    <SiteHeader />
+    <main class="w-full pt-20 bg-surface min-h-[calc(100vh-140px)]">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

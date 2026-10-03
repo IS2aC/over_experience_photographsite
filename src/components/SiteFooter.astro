@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import emblem from '../assets/overxp-emblem.png';
+import { NAV } from '../data/nav';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="w-full bg-surface-container-lowest border-t border-border-gold-subtle">
+  <div class="w-full px-margin md:px-margin-tablet lg:px-margin-desktop py-space-xl">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter-desktop items-start">
+      <div class="md:col-span-6 flex flex-col gap-space-sm">
+        <div class="flex items-center gap-space-sm">
+          <Image src={emblem} alt="" width={96} height={96} class="w-12 h-12 shrink-0 object-contain drop-shadow-[0_0_8px_rgba(212,162,76,0.3)]" />
+          <span class="font-label-technical text-label-technical text-text-ivory tracking-[0.35em] uppercase font-bold">OVERXP</span>
+        </div>
+        <p class="font-headline-sm text-headline-sm text-text-ivory font-light italic max-w-md">« Every pixel, a tribute to our culture »</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">
+          Direction photographique, haute couture et mémoires visuelles panafricaines orchestrées par Olivier Kouassi.
+        </p>
+      </div>
+
+      <div class="md:col-span-3 flex flex-col gap-space-sm">
+        <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Navigation</span>
+        <div class="flex flex-col gap-space-xs">
+          {
+            NAV.map(({ href, footerLabel }) => (
+              <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-studio-white transition-colors" href={href}>
+                {footerLabel}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="md:col-span-3 flex flex-col gap-space-sm">
+        <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Correspondance</span>
+        <div class="flex items-center gap-space-md">
+          <a aria-label="Instagram OverXP" class="w-9 h-9 rounded-full border border-border-gold-subtle flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-colors" href="https://instagram.com" target="_blank" rel="noopener">
+            <span class="material-symbols-outlined text-lg">photo_camera</span>
+          </a>
+          <a aria-label="Portfolio & Dossiers" class="w-9 h-9 rounded-full border border-border-gold-subtle flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-colors" href="/oeuvres">
+            <span class="material-symbols-outlined text-lg">palette</span>
+          </a>
+          <a aria-label="Contact direct Olivier Kouassi" class="w-9 h-9 rounded-full border border-border-gold-subtle flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-colors" href="/contact">
+            <span class="material-symbols-outlined text-lg">mail</span>
+          </a>
+        </div>
+        <span class="font-label-timecode text-label-timecode text-outline tracking-[0.2em]">REC [00:26:04:18] · ABIDJAN, CÔTE D'IVOIRE</span>
+      </div>
+    </div>
+
+    <div class="mt-space-xl pt-space-md border-t border-track-subtle flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+      <p class="font-label-timecode text-label-timecode text-on-surface-variant tracking-[0.2em]">© {year} OVERXP · TOUS DROITS RÉSERVÉS</p>
+      <p class="font-label-timecode text-label-timecode text-outline tracking-[0.15em]">CURATED BY OLIVIER KOUASSI</p>
+    </div>
+  </div>
+</footer>

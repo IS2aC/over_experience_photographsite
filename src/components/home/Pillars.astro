@@ -1,0 +1,69 @@
+---
+const pillars = [
+  {
+    n: '01', kicker: "L'optique", title: 'Lumière', icon: 'wb_sunny', tone: 'primary',
+    text: "Dompter le clair-obscur tropical. Modelage volumétrique sur peaux d'ébène, révélant la texture authentique sans altération artificielle.",
+    meta: 'Diffusion douce · Gradation or',
+  },
+  {
+    n: '02', kicker: "L'âme", title: 'Émotion', icon: 'psychology', tone: 'secondary',
+    text: "Capturer la vérité brute d'un regard souverain. Laisser s'exprimer la vulnérabilité et la majesté de chaque sujet sous l'objectif.",
+    meta: 'Intensité dramatique · Instant clé',
+  },
+  {
+    n: '03', kicker: 'La mémoire', title: 'Culture', icon: 'temple_hindu', tone: 'gold',
+    text: 'Célébration des parures royales de Grand-Bassam, tissages kita, orfèvrerie baoulé et codes esthétiques des grandes dynasties africaines.',
+    meta: 'Patrimoine immatériel · Fierté',
+  },
+  {
+    n: '04', kicker: 'La maîtrise', title: 'Excellence', icon: 'award_star', tone: 'primary',
+    text: "Normes d'étalonnage colorimétrique muséal, tirages fine-art argentiques et post-traitement de grade cinématographique international.",
+    meta: 'Calibration DCI-P3 · Haute définition',
+  },
+] as const;
+
+const tones = {
+  primary: { text: 'text-primary', icon: 'text-primary group-hover:bg-primary-container group-hover:text-on-primary' },
+  secondary: { text: 'text-secondary', icon: 'text-secondary group-hover:bg-secondary-container group-hover:text-on-secondary' },
+  gold: { text: 'text-gold-light', icon: 'text-gold-light group-hover:bg-gold-deep group-hover:text-studio-white' },
+};
+---
+
+<section class="w-full bg-surface-dim py-space-2xl px-margin md:px-margin-tablet lg:px-margin-desktop border-t border-border-gold-subtle">
+  <div class="max-w-7xl mx-auto flex flex-col gap-space-xl">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm" data-reveal>
+      <div class="flex flex-col gap-space-xs">
+        <span class="font-label-technical text-label-technical text-primary tracking-[0.35em] uppercase">Philosophie &amp; fondations</span>
+        <h2 class="font-headline-md text-headline-md text-text-ivory font-bold uppercase">Les 4 piliers de l'atelier</h2>
+      </div>
+      <p class="font-label-timecode text-label-timecode text-on-surface-variant tracking-[0.2em] uppercase">Protocole d'excellence visuelle · Abidjan</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+      {
+        pillars.map((p) => (
+          <article class="group flex flex-col justify-between p-space-lg bg-surface-warm/60 rounded-DEFAULT border border-border-gold-subtle hover:border-border-gold-active transition-all duration-300 relative overflow-hidden" data-reveal>
+            <div class="absolute top-0 right-0 p-space-xs opacity-20 group-hover:opacity-60 transition-opacity" aria-hidden="true">
+              <span class="font-label-timecode text-3xl font-bold text-primary">{p.n}</span>
+            </div>
+            <div class="flex flex-col gap-space-md">
+              <div class:list={['w-10 h-10 rounded-DEFAULT bg-surface-container-highest flex items-center justify-center transition-colors', tones[p.tone].icon]}>
+                <span class="material-symbols-outlined text-xl">{p.icon}</span>
+              </div>
+              <div class="flex flex-col gap-space-xs">
+                <span class:list={['font-label-technical text-label-technical tracking-[0.25em] uppercase', tones[p.tone].text]}>
+                  {p.n} / {p.kicker}
+                </span>
+                <h3 class="font-headline-sm text-headline-sm text-text-ivory font-bold uppercase">{p.title}</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">{p.text}</p>
+              </div>
+            </div>
+            <div class="pt-space-md mt-space-md border-t border-track-subtle">
+              <span class="font-label-timecode text-[11px] text-outline tracking-widest uppercase">{p.meta}</span>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
