@@ -1,0 +1,112 @@
+---
+import { Image } from 'astro:assets';
+import portrait from '../../assets/home/olivier-kouassi.jpg';
+
+const badges = [
+  { label: 'Clair-obscur ivoirien', color: 'text-text-ivory' },
+  { label: 'Pagne kita & ébène', color: 'text-primary' },
+  { label: 'Direction haute joaillerie', color: 'text-gold-light' },
+];
+---
+
+<!-- En-tête éditorial -->
+<header class="relative flex flex-col gap-space-md max-w-5xl" data-reveal>
+  <div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-sm text-outline">
+    <div class="flex items-center gap-space-sm">
+      <span class="inline-block w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+      <span class="font-label-technical text-label-technical tracking-[0.35em] text-primary uppercase">REC [00:42:19:14] · Direct line</span>
+    </div>
+    <span class="font-label-timecode text-label-timecode tracking-[0.25em] text-on-surface-variant uppercase">Abidjan (Cocody / Grand-Bassam) · International</span>
+  </div>
+  <div class="inline-flex items-center gap-space-xs">
+    <span class="h-px w-10 bg-primary"></span>
+    <span class="font-label-technical text-label-technical tracking-[0.35em] text-gold-light uppercase">Contact &amp; correspondance exclusive</span>
+  </div>
+  <div class="flex flex-col gap-space-sm">
+    <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-text-ivory font-extrabold uppercase">
+      L'auteur &amp; <span class="text-primary italic font-medium">le regard</span>
+    </h1>
+    <p class="font-title-md text-title-md text-on-surface-variant italic max-w-2xl font-light">
+      « Chaque rencontre façonne une œuvre intemporelle. La lumière ne capture pas seulement les traits, elle révèle l'âme de nos héritages. »
+    </p>
+  </div>
+</header>
+
+<!-- Portrait + manifeste (12 colonnes asymétriques) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-stretch">
+  <div class="lg:col-span-7 flex flex-col" data-reveal>
+    <div class="relative w-full bg-surface-warm p-space-sm shadow-2xl flex flex-col">
+      <div class="relative w-full aspect-[4/4.5] sm:aspect-[4/3.8] lg:aspect-[4/4.2] overflow-hidden bg-surface-container-lowest">
+        <Image
+          src={portrait}
+          alt="Portrait monochrome d'Olivier Kouassi avec son boîtier Canon, directeur artistique et photographe d'OverXP à Abidjan"
+          widths={[640, 960, 1280]}
+          sizes="(min-width: 1024px) 55vw, 100vw"
+          loading="eager"
+          class="w-full h-full object-cover object-center grayscale contrast-125 brightness-95 scale-[1.01] hover:scale-105 transition-transform duration-700 ease-out"
+        />
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-surface-container-lowest/40"></div>
+        <div class="pointer-events-none absolute top-4 left-4">
+          <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase bg-surface-container-lowest/80 px-2 py-1 backdrop-blur-sm">Portrait master · 85mm</span>
+        </div>
+        <div class="pointer-events-none absolute top-4 right-4 hidden sm:block">
+          <span class="font-label-timecode text-label-timecode text-text-ivory/80 tracking-[0.2em] bg-surface-container-lowest/80 px-2 py-1 backdrop-blur-sm">f/1.4 · 1/320s · ISO 64</span>
+        </div>
+        <div class="pointer-events-none absolute bottom-4 left-4 right-4 flex items-end justify-between gap-space-sm text-text-ivory">
+          <div class="flex flex-col">
+            <span class="font-label-technical text-label-technical tracking-[0.3em] uppercase text-primary">Olivier Kouassi</span>
+            <span class="font-label-timecode text-label-timecode text-on-surface-variant uppercase tracking-[0.2em]">Auteur, directeur visuel &amp; fondateur OverXP</span>
+          </div>
+          <div class="flex items-center gap-1.5 bg-surface-container-lowest/90 px-3 py-1 backdrop-blur-sm shrink-0">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span class="font-label-technical text-label-technical text-text-ivory tracking-[0.2em]">DISPONIBLE</span>
+          </div>
+        </div>
+      </div>
+      <div class="mt-space-sm pt-space-xs px-space-xs flex flex-wrap items-center justify-between gap-space-sm text-outline">
+        <span class="font-label-technical text-label-technical tracking-[0.25em] text-on-surface-variant uppercase">Canon EOS · Master primes</span>
+        <span class="font-label-timecode text-label-timecode tracking-[0.2em] text-primary">5°19'35"N 4°00'05"W · CÔTE D'IVOIRE</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lg:col-span-5 flex flex-col justify-between gap-space-lg" data-reveal>
+    <div class="bg-surface-warm p-space-lg flex flex-col gap-space-md shadow-xl relative overflow-hidden">
+      <div class="absolute -right-8 -top-8 w-32 h-32 bg-primary/5 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="flex items-center gap-space-xs">
+        <span class="material-symbols-outlined text-primary text-xl">camera</span>
+        <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Manifeste &amp; démarche</span>
+      </div>
+      <h2 class="font-headline-sm text-headline-sm text-text-ivory uppercase">L'alchimie de l'ébène et de l'or</h2>
+      <div class="flex flex-col gap-space-sm font-body-md text-body-md text-on-surface-variant">
+        <p>
+          Sous l'égide d'Olivier Kouassi, la photographie dépasse la simple capture pour s'ériger en mémoire sacrée. Pionnier d'un clair-obscur résolument contemporain, il modèle les peaux ébène avec une douceur sculpturale et un éclat souverain.
+        </p>
+        <p>
+          Chaque composition fait dialoguer la tradition royale ouest-africaine — textures vivantes du pagne kita, reflets solaires de l'or baoulé — avec la rigueur architecturale de la haute couture internationale.
+        </p>
+      </div>
+      <div class="pt-space-xs flex flex-wrap gap-2">
+        {badges.map((b) => <span class:list={['px-3 py-1 bg-surface-container font-label-technical text-label-technical tracking-[0.2em] uppercase', b.color]}>{b.label}</span>)}
+      </div>
+    </div>
+
+    <div class="bg-surface-container p-space-md flex flex-col gap-space-sm">
+      <div class="flex items-center justify-between gap-space-sm">
+        <div class="flex items-center gap-space-xs text-primary">
+          <span class="material-symbols-outlined text-lg">location_on</span>
+          <span class="font-label-technical text-label-technical tracking-[0.25em] uppercase">Atelier &amp; studio d'art</span>
+        </div>
+        <span class="font-label-timecode text-label-timecode text-outline tracking-[0.2em] uppercase whitespace-nowrap">Sur rendez-vous</span>
+      </div>
+      <p class="font-body-sm text-body-sm text-text-ivory">
+        Cocody &amp; Grand-Bassam<br />
+        <span class="text-on-surface-variant">Abidjan, Côte d'Ivoire · Sessions nomades à l'international</span>
+      </p>
+      <div class="pt-space-xs flex items-center justify-between gap-space-sm text-outline">
+        <span class="font-label-timecode text-label-timecode tracking-[0.2em]">RÉCEPTION PRIVÉE UNIQUEMENT</span>
+        <span class="font-label-technical text-label-technical text-primary tracking-[0.25em] uppercase">OverXP archives</span>
+      </div>
+    </div>
+  </div>
+</section>

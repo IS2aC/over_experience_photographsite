@@ -1,0 +1,162 @@
+---
+import { CONTACT, instagramUrl, mailtoUrl, whatsappUrl } from '../../data/contact';
+
+const card = 'group bg-surface-warm p-space-lg flex flex-col justify-between gap-space-lg shadow-lg';
+const link = `${card} transition-all duration-300 hover:bg-surface-raised hover:-translate-y-1 focus-visible:outline focus-visible:outline-primary`;
+const iconBox = 'w-12 h-12 rounded-DEFAULT bg-surface-container flex items-center justify-center text-primary';
+const iconHover = 'group-hover:bg-primary-container group-hover:text-on-primary transition-colors duration-300';
+---
+
+<section class="flex flex-col gap-space-lg">
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm" data-reveal>
+    <div class="flex flex-col gap-space-xs">
+      <div class="flex items-center gap-space-xs text-primary">
+        <span class="material-symbols-outlined text-lg">hub</span>
+        <span class="font-label-technical text-label-technical tracking-[0.3em] uppercase">Correspondances directes</span>
+      </div>
+      <h2 class="font-headline-md text-headline-lg-mobile md:text-headline-md text-text-ivory uppercase">Réseaux &amp; dialogue privilégié</h2>
+    </div>
+    <p class="font-label-timecode text-label-timecode text-on-surface-variant tracking-[0.2em] uppercase max-w-sm">
+      Réponse rapide pour galeries, collectionneurs et commandes privées.
+    </p>
+  </div>
+
+  <!-- Demande de tirage (affichée via ?sujet=tirage[&oeuvre=…], liens pré-remplis par src/scripts/contact.ts) -->
+  <div id="print-request" hidden class="relative overflow-hidden bg-surface-raised border border-border-gold-active rounded-DEFAULT p-space-md md:p-space-lg flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+    <div class="absolute -left-10 -top-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="relative flex flex-col gap-1">
+      <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase flex items-center gap-space-xs">
+        <span class="material-symbols-outlined text-base">workspace_premium</span> Demande de tirage d'art
+      </span>
+      <p class="font-title-md text-title-md text-text-ivory" id="print-request-title">Catalogue des tirages</p>
+      <p class="font-body-sm text-body-sm text-on-surface-variant">Votre message est pré-rédigé : choisissez simplement votre canal.</p>
+    </div>
+    <div class="relative flex flex-col sm:flex-row gap-space-sm shrink-0">
+      <a id="print-request-whatsapp" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-5 py-3 bg-gold-gradient text-on-primary font-label-technical text-label-technical uppercase tracking-[0.25em] font-bold rounded-DEFAULT hover:shadow-[0_0_20px_rgba(212,162,76,0.35)] transition-all">
+        <span class="material-symbols-outlined text-base">chat</span> WhatsApp
+      </a>
+      <a id="print-request-email" href={mailtoUrl()} class="inline-flex items-center justify-center gap-2 px-5 py-3 border border-border-gold-subtle text-text-ivory font-label-technical text-label-technical uppercase tracking-[0.25em] rounded-DEFAULT hover:border-primary hover:text-primary transition-all">
+        <span class="material-symbols-outlined text-base">mail</span> E-mail
+      </a>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+    <!-- WhatsApp -->
+    <a class={link} href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-reveal>
+      <div class="flex flex-col gap-space-sm">
+        <div class="flex items-center justify-between">
+          <div class:list={[iconBox, iconHover]}><span class="material-symbols-outlined text-2xl">chat</span></div>
+          <div class="flex items-center gap-1.5 px-2.5 py-1 bg-surface-container-lowest">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="font-label-timecode text-label-timecode text-text-ivory tracking-[0.2em]">DIRECT CHAT</span>
+          </div>
+        </div>
+        <div class="flex flex-col gap-space-xs mt-2">
+          <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Ligne directe &amp; WhatsApp</span>
+          <span class="font-title-md text-title-md text-text-ivory font-bold tracking-wider">{CONTACT.phoneDisplay}</span>
+        </div>
+      </div>
+      <div class="pt-space-sm flex items-center justify-between">
+        <span class="font-body-sm text-body-sm text-on-surface-variant">Projets d'art &amp; commandes</span>
+        <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+      </div>
+    </a>
+
+    <!-- Instagram personnel -->
+    <a class={link} href={instagramUrl(CONTACT.instagramPerso)} target="_blank" rel="noopener noreferrer" data-reveal>
+      <div class="flex flex-col gap-space-sm">
+        <div class="flex items-center justify-between">
+          <div class:list={[iconBox, iconHover]}><span class="material-symbols-outlined text-2xl">photo_camera</span></div>
+          <span class="font-label-timecode text-label-timecode text-on-surface-variant tracking-[0.2em] uppercase">Instagram</span>
+        </div>
+        <div class="flex flex-col gap-space-xs mt-2">
+          <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Regard personnel &amp; coulisses</span>
+          <span class="font-title-md text-title-md text-text-ivory font-bold tracking-wider">@{CONTACT.instagramPerso}</span>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">Publications éditoriales, carnets de route &amp; vision artistique</span>
+        </div>
+      </div>
+      <div class="pt-space-sm flex items-center justify-between">
+        <span class="font-body-sm text-body-sm text-on-surface-variant">Explorer la curation Instagram</span>
+        <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">open_in_new</span>
+      </div>
+    </a>
+
+    <!-- E-mail -->
+    <a class={link} href={mailtoUrl()} data-reveal>
+      <div class="flex flex-col gap-space-sm">
+        <div class="flex items-center justify-between">
+          <div class:list={[iconBox, iconHover]}><span class="material-symbols-outlined text-2xl">mark_email_read</span></div>
+          <span class="font-label-timecode text-label-timecode text-on-surface-variant tracking-[0.2em] uppercase">Officiel</span>
+        </div>
+        <div class="flex flex-col gap-space-xs mt-2">
+          <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Courriel de direction</span>
+          <span class="font-title-md text-title-md text-text-ivory font-bold tracking-wider break-all">{CONTACT.email}</span>
+        </div>
+      </div>
+      <div class="pt-space-sm flex items-center justify-between">
+        <span class="font-body-sm text-body-sm text-on-surface-variant">Correspondance &amp; dossiers</span>
+        <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">send</span>
+      </div>
+    </a>
+
+    <!-- Instagram studio -->
+    <a class={link} href={instagramUrl(CONTACT.instagramStudio)} target="_blank" rel="noopener noreferrer" data-reveal>
+      <div class="flex flex-col gap-space-sm">
+        <div class="flex items-center justify-between">
+          <div class:list={[iconBox, iconHover]}><span class="material-symbols-outlined text-2xl">auto_awesome</span></div>
+          <span class="font-label-timecode text-label-timecode text-on-surface-variant tracking-[0.2em] uppercase">Collectif</span>
+        </div>
+        <div class="flex flex-col gap-space-xs mt-2">
+          <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Plateforme artistique</span>
+          <span class="font-title-md text-title-md text-text-ivory font-bold tracking-wider">@{CONTACT.instagramStudio}</span>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">Campagnes, séries panafricaines et archives</span>
+        </div>
+      </div>
+      <div class="pt-space-sm flex items-center justify-between">
+        <span class="font-body-sm text-body-sm text-on-surface-variant">Consulter l'univers OverXP</span>
+        <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">open_in_new</span>
+      </div>
+    </a>
+
+    <!-- Bureau -->
+    <div class={card} data-reveal>
+      <div class="flex flex-col gap-space-sm">
+        <div class="flex items-center justify-between">
+          <div class={iconBox}><span class="material-symbols-outlined text-2xl">apartment</span></div>
+          <span class="font-label-timecode text-label-timecode text-on-surface-variant tracking-[0.2em] uppercase">Abidjan</span>
+        </div>
+        <div class="flex flex-col gap-space-xs mt-2">
+          <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Bureau &amp; galerie privée</span>
+          <span class="font-title-md text-title-md text-text-ivory font-bold tracking-wider">{CONTACT.city}</span>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">Accès réservé aux collectionneurs et partenaires, sur invitation.</span>
+        </div>
+      </div>
+      <div class="pt-space-sm flex items-center justify-between text-outline">
+        <span class="font-body-sm text-body-sm">Sélection d'œuvres physiques</span>
+        <span class="font-label-technical text-label-technical text-primary uppercase whitespace-nowrap">Sur rendez-vous</span>
+      </div>
+    </div>
+
+    <!-- Heure du studio -->
+    <div class="bg-gradient-to-br from-surface-warm via-surface-container to-surface-container-low p-space-lg flex flex-col justify-between gap-space-lg shadow-xl relative overflow-hidden" data-reveal>
+      <div class="flex flex-col gap-space-sm">
+        <div class="flex items-center justify-between">
+          <div class="w-12 h-12 rounded-DEFAULT bg-primary/20 flex items-center justify-center text-primary"><span class="material-symbols-outlined text-2xl">schedule</span></div>
+          <span class="font-label-timecode text-label-timecode text-primary tracking-[0.2em] uppercase">Temps réel</span>
+        </div>
+        <div class="flex flex-col gap-space-xs mt-2">
+          <span class="font-label-technical text-label-technical text-gold-light tracking-[0.3em] uppercase">Fuseau horaire studio</span>
+          <span class="font-title-md text-title-md text-text-ivory font-bold tracking-wider">GMT / UTC +0 (Abidjan)</span>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">
+            Heure locale : <time id="studio-clock" class="tabular-nums text-text-ivory">--:--:--</time> · <span id="studio-status">Studio</span>
+          </p>
+        </div>
+      </div>
+      <div class="pt-space-sm flex items-center gap-2 text-primary font-label-technical text-label-technical tracking-[0.25em] uppercase">
+        <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+        Téléphone &amp; visio
+      </div>
+    </div>
+  </div>
+</section>

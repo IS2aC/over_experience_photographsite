@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import emblem from '../assets/overxp-emblem.png';
 import { NAV } from '../data/nav';
+import { CONTACT, instagramUrl } from '../data/contact';
 
 const year = new Date().getFullYear();
 ---
@@ -36,7 +37,7 @@ const year = new Date().getFullYear();
       <div class="md:col-span-3 flex flex-col gap-space-sm">
         <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Correspondance</span>
         <div class="flex items-center gap-space-md">
-          <a aria-label="Instagram OverXP" class="w-9 h-9 rounded-full border border-border-gold-subtle flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-colors" href="https://instagram.com" target="_blank" rel="noopener">
+          <a aria-label="Instagram OverXP" class="w-9 h-9 rounded-full border border-border-gold-subtle flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-colors" href={instagramUrl(CONTACT.instagramStudio)} target="_blank" rel="noopener noreferrer">
             <span class="material-symbols-outlined text-lg">photo_camera</span>
           </a>
           <a aria-label="Portfolio & Dossiers" class="w-9 h-9 rounded-full border border-border-gold-subtle flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-colors" href="/oeuvres">

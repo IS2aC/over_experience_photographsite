@@ -43,12 +43,15 @@ npm run build    # sortie statique dans dist/
 - [ ] Remplacer les séries démo (`demo: true` : Souveraine d'Assinie, Épousailles Royales, L'Œil du Créateur)
 - [ ] Valider titres / textes des séries réelles
 
-## 3. Contact (`/contact`)
+## 3. Contact (`/contact`) ✅
 
-- [ ] Intégration de la maquette
-- [ ] Formulaire sans backend (à choisir : Formspree / Web3Forms / Netlify Forms)
-- [ ] Pré-remplir le sujet depuis `?sujet=tirage&oeuvre=…` (liens « Commander ce tirage » de la galerie)
-- [ ] Liens réseaux, e-mail, WhatsApp
+- [x] En-tête « L'auteur & le regard », portrait d'Olivier + manifeste, carte atelier
+- [x] Canaux directs (WhatsApp, Instagram ×2, e-mail, bureau, horloge du studio en temps réel)
+- [x] Pas de formulaire (conforme à la maquette) : demandes de tirage via `?sujet=tirage&oeuvre=…`
+      → bandeau avec message WhatsApp / e-mail pré-rédigé (sans backend)
+- [x] Coordonnées centralisées dans `src/data/contact.ts` (aussi utilisées par le footer)
+- [ ] **Renseigner les vraies coordonnées** (numéro WhatsApp, e-mail, comptes Instagram) — valeurs Stitch fictives
+- [ ] Valider les horaires « studio ouvert » (8h–20h, heure d'Abidjan)
 
 ## 4. Réserver (`/reserver`)
 
