@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/home/Hero.astro';
+import Manifesto from '../components/home/Manifesto.astro';
+import Pillars from '../components/home/Pillars.astro';
+import Stats from '../components/home/Stats.astro';
+import FeaturedWorks from '../components/home/FeaturedWorks.astro';
+import CallToAction from '../components/home/CallToAction.astro';
+---
+
+<Layout title="Accueil · Olivier Kouassi | OverXP">
+  <Hero />
+  <Manifesto />
+  <Pillars />
+  <Stats />
+  <FeaturedWorks />
+  <CallToAction />
+</Layout>
+
+<script>
+  import '../scripts/sequence';
+</script>

@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BookingHero from '../components/booking/BookingHero.astro';
+import Services from '../components/booking/Services.astro';
+import BookingForm from '../components/booking/BookingForm.astro';
+import ConciergeBanner from '../components/booking/ConciergeBanner.astro';
+---
+
+<Layout title="Réserver votre expérience · Olivier Kouassi | OverXP" description="Réserver une séance avec Olivier Kouassi : mariages, portraits studio, familles, extérieur, événements et produits — Abidjan et international.">
+  <BookingHero />
+  <Services />
+  <BookingForm />
+  <ConciergeBanner />
+</Layout>
+
+<script>
+  import '../scripts/booking';
+</script>

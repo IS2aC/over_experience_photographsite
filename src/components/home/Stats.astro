@@ -1,0 +1,26 @@
+---
+import { CITIES } from '../../data/contact';
+// `count` : valeur animée au scroll (voir src/scripts/reveal.ts) ; sans `count`, la valeur est affichée telle quelle.
+const stats = [
+  { value: '+500', count: 500, label: 'Séances dirigées', text: 'Portraits, mode, mariages & événements.', color: 'text-primary', border: 'border-primary/40' },
+  { value: '+10', count: 10, label: "Ans d'expérience", text: 'Maîtrise optique et direction de plateaux complexes.', color: 'text-secondary', border: 'border-secondary/40' },
+  { value: '+300', count: 300, label: 'Clients de prestige', text: 'Maisons de luxe, dignitaires, créateurs & galeries.', color: 'text-primary-container', border: 'border-primary-container/40' },
+  { value: 'CIV', label: 'Présence', text: `Présent à ${CITIES} · Déplacements à l'international.`, color: 'text-gold-light', border: 'border-gold-light/40' },
+];
+---
+
+<section class="w-full bg-surface-container-low py-space-xl px-margin md:px-margin-tablet lg:px-margin-desktop border-y border-border-gold-subtle">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-gutter text-left">
+    {
+      stats.map((s) => (
+        <div class:list={['flex flex-col gap-space-xs border-l-2 pl-space-md', s.border]} data-reveal>
+          <span class:list={['font-display-xl text-3xl md:text-display-xl font-extrabold leading-none tabular-nums', s.color]} data-count={s.count}>
+            {s.value}
+          </span>
+          <span class="font-label-technical text-label-technical text-text-ivory tracking-[0.25em] uppercase font-semibold">{s.label}</span>
+          <span class="font-body-sm text-body-sm text-outline">{s.text}</span>
+        </div>
+      ))
+    }
+  </div>
+</section>

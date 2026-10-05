@@ -1,0 +1,59 @@
+---
+import { CATEGORIES, type Category } from '../../data/categories';
+
+interface Props {
+  /** Catégories réellement présentes dans la collection (les onglets vides sont masqués) */
+  categories: Category[];
+}
+
+const { categories } = Astro.props;
+const tabs = [{ key: 'all', label: 'Tout' }, ...categories.map((key) => ({ key, label: CATEGORIES[key] }))];
+---
+
+<section class="relative w-full px-margin md:px-margin-tablet lg:px-margin-desktop pt-space-xl pb-space-lg overflow-hidden">
+  <!-- Repères HUD -->
+  <div class="flex items-center justify-between border-b border-border-gold-subtle pb-space-xs mb-space-lg" data-reveal>
+    <div class="flex items-center gap-space-sm text-outline font-label-technical text-label-technical tracking-[0.35em] uppercase">
+      <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+      <span>Archives visuelles // Vol. 2024-2026</span>
+    </div>
+    <div class="flex items-center gap-space-md text-outline font-label-timecode text-label-timecode">
+      <span>LOC : ABIDJAN · YAMOUSSOUKRO</span>
+      <span class="hidden sm:inline text-primary/40">|</span>
+      <span class="hidden sm:inline">REC [00:48:19:12]</span>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-end" data-reveal>
+    <div class="lg:col-span-8 flex flex-col">
+      <span class="font-label-technical text-label-technical text-primary tracking-[0.45em] uppercase mb-space-xs">Portfolio &amp; collections d'art</span>
+      <h1 class="font-display-xl text-display-xl-mobile md:text-display-xl text-text-ivory uppercase leading-none">Œuvres</h1>
+    </div>
+    <div class="lg:col-span-4 flex flex-col justify-end pb-2">
+      <p class="font-headline-sm text-title-md md:text-headline-sm text-gold-light italic font-light leading-snug">« La bibliothèque visuelle d'Olivier Kouassi »</p>
+      <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+        Chaque volume poursuit la même quête : le beau, dans la lumière, la matière et l'instant.
+      </p>
+    </div>
+  </div>
+
+  <!-- Onglets de filtre -->
+  <div class="mt-space-xl w-full border-b border-track-subtle" data-reveal>
+    <div class="flex items-center gap-space-lg md:gap-space-xl overflow-x-auto py-space-xs [scrollbar-width:none]" role="tablist" aria-label="Filtrer les œuvres">
+      {
+        tabs.map((t, i) => (
+          <button
+            type="button"
+            role="tab"
+            aria-selected={i === 0 ? 'true' : 'false'}
+            class="filter-tab group flex flex-col items-center shrink-0 cursor-pointer transition-colors duration-300 text-on-surface-variant hover:text-studio-white aria-selected:text-primary aria-selected:font-semibold"
+            data-filter={t.key}
+          >
+            <span class="font-label-technical text-label-technical tracking-[0.35em] uppercase py-2">{t.label}</span>
+            <span class="w-full h-px bg-transparent group-hover:bg-primary/40 group-aria-selected:bg-primary transition-colors duration-300" />
+          </button>
+        ))
+      }
+    </div>
+  </div>
+</section>

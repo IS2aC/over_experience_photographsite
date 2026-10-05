@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import GalleryHeader from '../components/oeuvres/GalleryHeader.astro';
+import Bookshelf from '../components/oeuvres/Bookshelf.astro';
+import Viewer from '../components/oeuvres/Viewer.astro';
+import Archives from '../components/oeuvres/Archives.astro';
+import { CATEGORY_KEYS } from '../data/categories';
+
+const volumes = (await getCollection('oeuvres')).sort((a, b) => a.data.order - b.data.order);
+const categories = CATEGORY_KEYS.filter((c) => volumes.some((v) => v.data.categories.includes(c)));
+---
+
+<Layout title="Œuvres · Olivier Kouassi | OverXP" description="La bibliothèque visuelle d'Olivier Kouassi : séries photographiques, architecture, mode et portraits. La recherche du beau, à Abidjan et Bouaké.">
+  <GalleryHeader categories={categories} />
+  <Bookshelf volumes={volumes} />
+  <Archives volumes={volumes} />
+  <Viewer volumes={volumes} />
+</Layout>
+
+<script>
+  import '../scripts/gallery';
+</script>

@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Page introuvable · OverXP" description="Cette page n'existe pas ou a été déplacée.">
+  <section class="relative min-h-[70vh] flex items-center justify-center px-margin md:px-margin-tablet lg:px-margin-desktop py-space-2xl overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="relative flex flex-col items-center text-center gap-space-md max-w-xl">
+      <span class="font-label-timecode text-label-timecode text-primary tracking-[0.3em] uppercase">REC [00:00:04:04] · Hors champ</span>
+      <h1 class="font-display-xl text-display-xl-mobile md:text-display-xl uppercase text-gold-gradient">404</h1>
+      <p class="font-title-md text-title-md text-text-ivory">Ce cliché n'existe pas — ou n'a jamais été développé.</p>
+      <p class="font-body-md text-body-md text-on-surface-variant">La page que vous cherchez a peut-être été déplacée. Revenez à l'accueil ou parcourez les œuvres.</p>
+      <div class="flex flex-col sm:flex-row gap-space-md mt-space-sm w-full sm:w-auto">
+        <a href="/" class="px-space-lg py-3 bg-gold-gradient text-on-primary font-label-technical text-label-technical tracking-[0.25em] uppercase font-bold rounded-DEFAULT text-center">Retour à l'accueil</a>
+        <a href="/oeuvres" class="px-space-lg py-3 border border-border-gold-subtle text-text-ivory font-label-technical text-label-technical tracking-[0.25em] uppercase rounded-DEFAULT hover:border-primary transition-colors text-center">Voir les œuvres</a>
+      </div>
+    </div>
+  </section>
+</Layout>

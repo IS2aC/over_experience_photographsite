@@ -1,0 +1,43 @@
+---
+import { CONTACT } from '../../data/contact';
+const hud = [
+  { icon: 'shutter_speed', text: 'ISO 100 · 85MM F/1.4' },
+  { icon: 'location_on', text: `${CONTACT.cities.join(' · ')} · International` },
+  { icon: 'verified', text: 'Status : disponibilités ouvertes' },
+];
+---
+
+<section class="relative w-full overflow-hidden bg-surface-container-lowest px-margin md:px-margin-tablet lg:px-margin-desktop pt-10 pb-16">
+  <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-primary/10 rounded-full blur-[140px] pointer-events-none"></div>
+  <div class="absolute top-20 right-10 w-96 h-96 bg-tertiary-container/10 rounded-full blur-[160px] pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto flex flex-col items-center text-center" data-reveal>
+    <div class="inline-flex items-center gap-space-sm px-space-md py-1.5 rounded-full bg-surface-raised shadow-sm">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0"></span>
+      <span class="font-label-technical text-label-technical text-primary tracking-[0.35em] uppercase">Protocole de mandat photographique · Session privée &amp; commande d'art</span>
+    </div>
+
+    <h1 class="mt-space-md font-headline-lg text-headline-lg-mobile md:text-headline-lg text-text-ivory uppercase max-w-5xl">
+      Capturons <span class="text-gold-gradient">vos moments</span> avec nous
+    </h1>
+
+    <div class="mt-space-md inline-block px-space-lg py-2 rounded-full bg-surface-warm shadow-md">
+      <p class="font-title-md text-title-md text-gold-light italic">« Transformer de beaux instants en souvenirs intemporels. »</p>
+    </div>
+
+    <p class="mt-space-md font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+      Chaque séance bénéficie d'une direction artistique sur mesure, d'une scénographie soignée et de tirages fine art numérotés sous la signature d'Olivier Kouassi.
+    </p>
+
+    <div class="mt-space-lg w-full max-w-3xl flex flex-wrap items-center justify-center sm:justify-between gap-space-sm px-space-md py-2.5 rounded-DEFAULT bg-surface-container-low shadow-sm">
+      {
+        hud.map((h) => (
+          <div class="flex items-center gap-space-xs text-outline">
+            <span class="material-symbols-outlined text-sm text-primary">{h.icon}</span>
+            <span class="font-label-timecode text-label-timecode tracking-[0.25em] uppercase">{h.text}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

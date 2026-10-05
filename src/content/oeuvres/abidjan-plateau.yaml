@@ -1,0 +1,30 @@
+order: 2
+title: Abidjan, Lignes du Plateau
+spine: Lignes du Plateau
+subtitle: Architecture, végétation & trafic du quartier des affaires
+categories: [architecture, urbain]
+categoryLabel: Urbain · Architecture
+year: 2024
+location: Abidjan · Côte d'Ivoire
+client: Projet personnel · Studio OverXP
+description: >-
+  Le Plateau comme un manifeste géométrique : la Pyramide, les minarets au crépuscule et les boulevards
+  où une seule couleur échappe au monochrome. Abidjan vue à hauteur d'homme, entre béton et floraisons.
+accent: tertiary
+archive:
+  badge: Série originale
+  date: Déc 2024
+  tags: [Plateau · Abidjan, Lightroom grade]
+photos:
+  - src: ./images/abidjan-pyramide.jpg
+    title: La Pyramide
+    alt: La Pyramide du Plateau à Abidjan derrière des fleurs orange et une pelouse
+    exif: iPhone 12 Pro · 52mm · f/2 · 1/1400s · ISO 25
+  - src: ./images/abidjan-mosquee.jpg
+    title: Minaret au crépuscule
+    alt: Mosquée au dôme bleu et minaret éclairés par la lumière orangée du soir à Abidjan
+    exif: iPhone 12 Pro · 26mm · f/1.6 · 1/730s · ISO 32
+  - src: ./images/abidjan-boulevard.jpg
+    title: Boulevard monochrome
+    alt: Boulevard du Plateau en noir et blanc où seules une voiture orange et une voiture rouge restent en couleur
+    exif: iPhone 12 Pro · 26mm · f/1.6 · 1/12000s · ISO 32

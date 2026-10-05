@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import emblem from '../../assets/overxp-emblem.png';
+import { CONTACT } from '../../data/contact';
+
+const infos = [
+  { icon: 'location_on', text: CONTACT.cities.join(' · ') },
+  { icon: 'schedule', text: 'Réservations ouvertes 2026/2027' },
+  { icon: 'flight_takeoff', text: 'Déplacements internationaux' },
+];
+---
+
+<section class="relative w-full bg-surface-container-lowest py-space-2xl px-margin md:px-margin-tablet lg:px-margin-desktop overflow-hidden border-t border-border-gold-subtle">
+  <!-- Auras dorée et terracotta -->
+  <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-secondary-container/10 rounded-full blur-[160px] pointer-events-none"></div>
+  <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[160px] pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center text-center gap-space-lg" data-reveal>
+    <!-- Sceau OverXP -->
+    <div class="flex items-center justify-center w-16 h-16 rounded-full bg-surface-warm border border-border-gold-active">
+      <Image src={emblem} alt="" width={96} height={96} class="w-11 h-11 object-contain" />
+    </div>
+
+    <div class="flex flex-col gap-space-xs">
+      <span class="font-label-technical text-label-technical text-primary tracking-[0.35em] uppercase font-bold">Collaboration &amp; commande artistique</span>
+      <h2 class="font-display-xl text-headline-lg-mobile md:text-headline-lg text-text-ivory font-extrabold uppercase">Créons ensemble</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-space-xs">
+        Que vous soyez une maison de haute joaillerie, une famille célébrant une union ou une institution d'art, confiez la direction de vos images à Olivier Kouassi.
+      </p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center gap-space-md w-full sm:w-auto mt-space-sm">
+      <a class="w-full sm:w-auto px-space-xl py-4 bg-gold-gradient text-surface-container-lowest font-label-technical text-label-technical tracking-[0.25em] uppercase font-bold rounded-DEFAULT hover:shadow-[0_0_25px_rgba(212,162,76,0.4)] hover:-translate-y-0.5 transition-all text-center" href="/reserver">
+        Réserver une séance
+      </a>
+      <a class="w-full sm:w-auto px-space-xl py-4 border border-border-gold-subtle text-text-ivory font-label-technical text-label-technical tracking-[0.25em] uppercase font-semibold rounded-DEFAULT hover:border-primary hover:text-studio-white transition-all text-center" href="/oeuvres">
+        Parcourir les œuvres
+      </a>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-center gap-space-lg pt-space-md border-t border-track-subtle w-full text-on-surface-variant">
+      {
+        infos.map((i) => (
+          <div class="flex items-center gap-space-xs">
+            <span class="material-symbols-outlined text-sm text-primary">{i.icon}</span>
+            <span class="font-label-timecode text-label-timecode uppercase tracking-wider">{i.text}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

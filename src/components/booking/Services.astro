@@ -1,0 +1,108 @@
+---
+import { Image } from 'astro:assets';
+import poster from '../../content/oeuvres/images/yamoussoukro-basilique-dome.jpg';
+import { SERVICES } from '../../data/booking';
+import { CONTACT, whatsappUrl } from '../../data/contact';
+---
+
+<section class="w-full bg-surface py-16 px-margin md:px-margin-tablet lg:px-margin-desktop">
+  <div class="max-w-7xl mx-auto flex flex-col gap-space-2xl">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md" data-reveal>
+      <div>
+        <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase block mb-1">Panorama des disciplines</span>
+        <h2 class="font-headline-md text-headline-lg-mobile md:text-headline-md text-text-ivory uppercase">Nos services signature</h2>
+      </div>
+      <p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">
+        Sélectionnez la nature de votre commande pour pré-remplir le formulaire et permettre au studio de préparer éclairage et scénographie.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-start">
+      <!-- Colonne gauche : visuel + ligne directe -->
+      <div class="lg:col-span-5 flex flex-col gap-space-md" data-reveal>
+        <div class="group relative rounded-xl overflow-hidden bg-surface-container shadow-xl">
+          <div class="relative w-full aspect-[4/5] overflow-hidden bg-surface-container-highest">
+            <Image
+              src={poster}
+              alt="Le dôme doré de la basilique de Yamoussoukro photographié par Olivier Kouassi"
+              widths={[480, 720, 960]}
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-black/20"></div>
+            <div class="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1 rounded bg-black/60 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+              <span class="font-label-timecode text-label-timecode text-text-ivory tracking-[0.2em]">ORIGINAL MASTER · ARCHIVE</span>
+            </div>
+            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-text-ivory">
+              <div>
+                <span class="font-label-technical text-label-technical text-gold-light tracking-[0.3em] block">SESSION OVERXP</span>
+                <span class="font-title-md text-title-md font-semibold">BOOK WITH US</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/20 backdrop-blur-md flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined text-xl">camera</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-space-md bg-surface-raised flex items-center justify-between gap-space-sm">
+            <div class="flex items-center gap-space-sm">
+              <div class="w-8 h-8 rounded-full bg-surface-warm flex items-center justify-center text-primary shrink-0">
+                <span class="material-symbols-outlined text-base">auto_awesome</span>
+              </div>
+              <div>
+                <p class="font-body-sm text-body-sm text-text-ivory font-medium">Cadre scénographique inclus</p>
+                <p class="font-label-timecode text-label-timecode text-outline tracking-wider">ÉCLAIRAGE SUR MESURE</p>
+              </div>
+            </div>
+            <span class="font-label-technical text-label-technical text-primary tracking-[0.2em] bg-primary/10 px-2 py-1 rounded shrink-0">{new Date().getFullYear()}/OVERXP</span>
+          </div>
+        </div>
+
+        <div class="p-space-lg rounded-xl bg-surface-warm shadow-md flex items-center justify-between gap-space-md">
+          <div>
+            <span class="font-label-technical text-label-technical text-gold-light tracking-[0.25em] uppercase block">Ligne directe WhatsApp</span>
+            <p class="font-headline-sm text-headline-sm text-text-ivory font-semibold mt-1">{CONTACT.phoneDisplay}</p>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">Conciergerie studio · Olivier Kouassi</p>
+          </div>
+          <a aria-label="Contacter via WhatsApp" class="w-12 h-12 shrink-0 rounded-full bg-gold-gradient text-on-primary flex items-center justify-center shadow-lg transition-transform hover:scale-110 active:scale-95" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
+            <span class="material-symbols-outlined text-2xl">chat</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Colonne droite : 6 prestations (sélection → formulaire) -->
+      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+        {
+          SERVICES.map((s) => (
+            <button
+              type="button"
+              class="service-card group text-left cursor-pointer p-space-lg rounded-xl bg-surface-raised hover:bg-surface-warm shadow-md transition-all duration-300 relative flex flex-col justify-between aria-pressed:bg-surface-warm aria-pressed:ring-2 aria-pressed:ring-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+              data-service={s.id}
+              aria-pressed="false"
+              data-reveal
+            >
+              <div class="flex items-start justify-between gap-space-sm">
+                <div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary group-aria-pressed:bg-primary-container group-aria-pressed:text-on-primary transition-colors">
+                  <span class="material-symbols-outlined text-2xl">{s.icon}</span>
+                </div>
+                <div class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container text-gold-light font-label-technical text-label-technical tracking-wider">
+                  <span class="material-symbols-outlined text-sm text-primary">check_circle</span>
+                  <span class="group-aria-pressed:hidden">DISPONIBLE</span>
+                  <span class="hidden group-aria-pressed:inline">SÉLECTIONNÉ</span>
+                </div>
+              </div>
+              <div class="mt-space-lg">
+                <h3 class="font-title-md text-title-md text-text-ivory group-hover:text-primary group-aria-pressed:text-primary transition-colors font-bold">{s.title}</h3>
+                <p class="mt-1 font-body-sm text-body-sm text-on-surface-variant line-clamp-3">{s.text}</p>
+              </div>
+              <div class="mt-space-md pt-space-xs flex items-center justify-between text-outline">
+                <span class="font-label-timecode text-label-timecode tracking-wider uppercase">{s.meta}</span>
+                <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform text-primary">arrow_forward</span>
+              </div>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
