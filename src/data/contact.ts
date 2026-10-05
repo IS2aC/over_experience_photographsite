@@ -10,6 +10,7 @@ export const CONTACT = {
   email: 'olivier@overxp.ci',
   instagramPerso: 'olivierkouassi',
   instagramStudio: 'overxp.officiel',
+  tiktok: 'overxp',
   /** Villes où OverXP est représenté (ordre d'affichage) */
   cities: ['Abidjan', 'Bouaké'],
   country: "Côte d'Ivoire",
@@ -20,6 +21,7 @@ export const CONTACT = {
 export const CITIES = CONTACT.cities.join(' & ');
 
 export const instagramUrl = (handle: string) => `https://instagram.com/${handle}`;
+export const tiktokUrl = (handle: string) => `https://www.tiktok.com/@${handle}`;
 
 export const whatsappUrl = (text?: string) =>
   `https://wa.me/${CONTACT.whatsapp}${text ? `?text=${encodeURIComponent(text)}` : ''}`;

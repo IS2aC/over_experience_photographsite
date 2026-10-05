@@ -158,6 +158,15 @@
   body {
     overscroll-behavior: none;
   }
+  /* Icônes Material Symbols : largeur fixe pendant le chargement de la police (sinon le nom de
+     l'icône, ex. « shutter_speed », occupe la place du texte et décale la mise en page) */
+  .material-symbols-outlined {
+    display: inline-block;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 1;
+  }
 }
 
 @utility text-gold-gradient {

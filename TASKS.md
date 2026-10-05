@@ -46,12 +46,11 @@ npm run build    # sortie statique dans dist/
 ## 3. Contact (`/contact`) ✅
 
 - [x] En-tête « L'auteur & le regard », portrait d'Olivier + manifeste, carte atelier
-- [x] Canaux directs (WhatsApp, Instagram ×2, e-mail, bureau, horloge du studio en temps réel)
+- [x] Canaux directs : WhatsApp (direct chat), Instagram, TikTok
 - [x] Pas de formulaire (conforme à la maquette) : demandes de tirage via `?sujet=tirage&oeuvre=…`
       → bandeau avec message WhatsApp / e-mail pré-rédigé (sans backend)
 - [x] Coordonnées centralisées dans `src/data/contact.ts` (aussi utilisées par le footer)
-- [ ] **Renseigner les vraies coordonnées** (numéro WhatsApp, e-mail, comptes Instagram) — valeurs Stitch fictives
-- [ ] Valider les horaires « studio ouvert » (8h–20h, heure d'Abidjan)
+- [ ] **Renseigner les vraies coordonnées** (numéro WhatsApp, e-mail, Instagram, TikTok) — valeurs fictives
 
 ## 4. Réserver (`/reserver`) ✅
 
@@ -67,7 +66,13 @@ npm run build    # sortie statique dans dist/
 
 ## 5. Finitions & mise en ligne
 
-- [ ] SEO : meta Open Graph, sitemap (`@astrojs/sitemap`), robots.txt
-- [ ] Favicon / icônes à partir du logo officiel (l'onglet utilise encore l'ancien pictogramme)
-- [ ] Audit Lighthouse (perf, accessibilité)
-- [ ] Déploiement (Netlify / Vercel / Cloudflare Pages — build `npm run build`, dossier `dist/`)
+- [x] Animation de l'appareil au scroll (accueil) : 72 images extraites de la vidéo (`public/frames/1280` et `/768`),
+      hero épinglé, décomposition ↓ / recomposition ↑, préchargement par le loader, repli animations réduites
+- [x] SEO : URL canonique, Open Graph / Twitter (image `public/og-image.jpg`), données structurées Schema.org
+      (`ProfessionalService`, villes desservies), `sitemap-index.xml`, `robots.txt`, page 404
+- [x] Icônes : favicon, apple-touch-icon, icônes 192/512 + `site.webmanifest` depuis le logo officiel
+- [x] Performance : police Montserrat préchargée, police d'icônes réduite aux seules icônes utilisées, zéro CLS
+- [x] Accessibilité : animations d'apparition en opacité seule (contenu toujours lu par les lecteurs d'écran)
+- [x] Audit Lighthouse (build de production) : 97–100 en performance mobile, 100 partout ailleurs (accessibilité, bonnes pratiques, SEO)
+- [ ] **Domaine** : remplacer `https://www.overxp.ci` (astro.config.mjs) ou définir `SITE_URL` au déploiement
+- [ ] Déploiement (Netlify / Vercel / Cloudflare Pages — build `npm run build`, dossier `dist/`, Node 22)

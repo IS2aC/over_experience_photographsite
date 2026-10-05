@@ -1,5 +1,6 @@
 import { gsap } from 'gsap';
 import { REVEAL_EVENT } from './reveal';
+import { framesToPreload } from './frames';
 
 const ORIGIN = '1076 862'; // centre du diaphragme (coordonnées SVG)
 const LEN = 2 * Math.PI * 580; // périmètre de l'anneau de progression
@@ -35,12 +36,16 @@ const progressDone = () =>
   });
 
 /* ---------- Préchargement réel des images (hors lazy) d'un document ---------- */
+// + la séquence de l'appareil photo si la page en contient une ([data-frame-sequence])
 const preloadImages = (doc: Document, from: number, base: URL | string = location.href) => {
+  const frames = doc.querySelector('[data-frame-sequence]') ? framesToPreload() : [];
   const srcs = [
     ...new Set(
       [...doc.images]
         .filter((img) => img.getAttribute('loading') !== 'lazy' && img.getAttribute('src'))
-        .map((img) => new URL(img.getAttribute('src')!, base).href),
+        .map((img) => img.getAttribute('src')!)
+        .concat(frames)
+        .map((src) => new URL(src, base).href),
     ),
   ];
   if (!srcs.length) return Promise.resolve();

@@ -1,8 +1,7 @@
 ---
-import { CITIES, CONTACT, instagramUrl, mailtoUrl, whatsappUrl } from '../../data/contact';
+import { CONTACT, instagramUrl, mailtoUrl, tiktokUrl, whatsappUrl } from '../../data/contact';
 
-const card = 'group bg-surface-warm p-space-lg flex flex-col justify-between gap-space-lg shadow-lg';
-const link = `${card} transition-all duration-300 hover:bg-surface-raised hover:-translate-y-1 focus-visible:outline focus-visible:outline-primary`;
+const link = `group bg-surface-warm p-space-lg flex flex-col justify-between gap-space-lg shadow-lg transition-all duration-300 hover:bg-surface-raised hover:-translate-y-1 focus-visible:outline focus-visible:outline-primary`;
 const iconBox = 'w-12 h-12 rounded-DEFAULT bg-surface-container flex items-center justify-center text-primary';
 const iconHover = 'group-hover:bg-primary-container group-hover:text-on-primary transition-colors duration-300';
 ---
@@ -82,81 +81,28 @@ const iconHover = 'group-hover:bg-primary-container group-hover:text-on-primary 
       </div>
     </a>
 
-    <!-- E-mail -->
-    <a class={link} href={mailtoUrl()} data-reveal>
+    <!-- TikTok -->
+    <a class={link} href={tiktokUrl(CONTACT.tiktok)} target="_blank" rel="noopener noreferrer" data-reveal>
       <div class="flex flex-col gap-space-sm">
         <div class="flex items-center justify-between">
-          <div class:list={[iconBox, iconHover]}><span class="material-symbols-outlined text-2xl">mark_email_read</span></div>
-          <span class="font-label-timecode text-label-timecode text-on-surface-variant tracking-[0.2em] uppercase">Officiel</span>
+          <div class:list={[iconBox, iconHover]}>
+            <!-- Logo TikTok (Simple Icons, CC0) -->
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+            </svg>
+          </div>
+          <span class="font-label-timecode text-label-timecode text-on-surface-variant tracking-[0.2em] uppercase">TikTok</span>
         </div>
         <div class="flex flex-col gap-space-xs mt-2">
-          <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Courriel de direction</span>
-          <span class="font-title-md text-title-md text-text-ivory font-bold tracking-wider break-all">{CONTACT.email}</span>
+          <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Coulisses en mouvement</span>
+          <span class="font-title-md text-title-md text-text-ivory font-bold tracking-wider">@{CONTACT.tiktok}</span>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">Making-of des séances, behind the scenes &amp; formats courts</span>
         </div>
       </div>
       <div class="pt-space-sm flex items-center justify-between">
-        <span class="font-body-sm text-body-sm text-on-surface-variant">Correspondance &amp; dossiers</span>
-        <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">send</span>
-      </div>
-    </a>
-
-    <!-- Instagram studio -->
-    <a class={link} href={instagramUrl(CONTACT.instagramStudio)} target="_blank" rel="noopener noreferrer" data-reveal>
-      <div class="flex flex-col gap-space-sm">
-        <div class="flex items-center justify-between">
-          <div class:list={[iconBox, iconHover]}><span class="material-symbols-outlined text-2xl">auto_awesome</span></div>
-          <span class="font-label-timecode text-label-timecode text-on-surface-variant tracking-[0.2em] uppercase">Collectif</span>
-        </div>
-        <div class="flex flex-col gap-space-xs mt-2">
-          <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Plateforme artistique</span>
-          <span class="font-title-md text-title-md text-text-ivory font-bold tracking-wider">@{CONTACT.instagramStudio}</span>
-          <span class="font-body-sm text-body-sm text-on-surface-variant">Campagnes, séries panafricaines et archives</span>
-        </div>
-      </div>
-      <div class="pt-space-sm flex items-center justify-between">
-        <span class="font-body-sm text-body-sm text-on-surface-variant">Consulter l'univers OverXP</span>
+        <span class="font-body-sm text-body-sm text-on-surface-variant">Suivre OverXP sur TikTok</span>
         <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">open_in_new</span>
       </div>
     </a>
-
-    <!-- Bureau -->
-    <div class={card} data-reveal>
-      <div class="flex flex-col gap-space-sm">
-        <div class="flex items-center justify-between">
-          <div class={iconBox}><span class="material-symbols-outlined text-2xl">apartment</span></div>
-          <span class="font-label-timecode text-label-timecode text-on-surface-variant tracking-[0.2em] uppercase">Côte d'Ivoire</span>
-        </div>
-        <div class="flex flex-col gap-space-xs mt-2">
-          <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Bureaux &amp; galerie privée</span>
-          <span class="font-title-md text-title-md text-text-ivory font-bold tracking-wider">{CITIES}</span>
-          <span class="font-body-sm text-body-sm text-on-surface-variant">Accès réservé aux collectionneurs et partenaires, sur invitation.</span>
-        </div>
-      </div>
-      <div class="pt-space-sm flex items-center justify-between text-outline">
-        <span class="font-body-sm text-body-sm">Sélection d'œuvres physiques</span>
-        <span class="font-label-technical text-label-technical text-primary uppercase whitespace-nowrap">Sur rendez-vous</span>
-      </div>
-    </div>
-
-    <!-- Heure du studio -->
-    <div class="bg-gradient-to-br from-surface-warm via-surface-container to-surface-container-low p-space-lg flex flex-col justify-between gap-space-lg shadow-xl relative overflow-hidden" data-reveal>
-      <div class="flex flex-col gap-space-sm">
-        <div class="flex items-center justify-between">
-          <div class="w-12 h-12 rounded-DEFAULT bg-primary/20 flex items-center justify-center text-primary"><span class="material-symbols-outlined text-2xl">schedule</span></div>
-          <span class="font-label-timecode text-label-timecode text-primary tracking-[0.2em] uppercase">Temps réel</span>
-        </div>
-        <div class="flex flex-col gap-space-xs mt-2">
-          <span class="font-label-technical text-label-technical text-gold-light tracking-[0.3em] uppercase">Fuseau horaire studio</span>
-          <span class="font-title-md text-title-md text-text-ivory font-bold tracking-wider">GMT / UTC +0 (Côte d'Ivoire)</span>
-          <p class="font-body-sm text-body-sm text-on-surface-variant">
-            Heure locale : <time id="studio-clock" class="tabular-nums text-text-ivory">--:--:--</time> · <span id="studio-status">Studio</span>
-          </p>
-        </div>
-      </div>
-      <div class="pt-space-sm flex items-center gap-2 text-primary font-label-technical text-label-technical tracking-[0.25em] uppercase">
-        <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
-        Téléphone &amp; visio
-      </div>
-    </div>
   </div>
 </section>

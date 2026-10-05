@@ -12,21 +12,13 @@ const setup = () => {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   ctx = gsap.context(() => {
-    // Apparition en fondu-montée des blocs marqués [data-reveal], par lots au scroll
-    gsap.set('[data-reveal]', { autoAlpha: 0, y: 40 });
+    // Apparition en fondu-montée des blocs marqués [data-reveal], par lots au scroll.
+    // Opacité seule (pas de visibility: hidden) : le contenu reste accessible aux lecteurs d'écran.
+    gsap.set('[data-reveal]', { opacity: 0, y: 40 });
     ScrollTrigger.batch('[data-reveal]', {
       start: 'top 88%',
       once: true,
-      onEnter: (els) => gsap.to(els, { autoAlpha: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.12, overwrite: true }),
-    });
-
-    // Vue éclatée du hero : léger zoom d'entrée puis parallaxe au scroll
-    gsap.from('.hero-camera', { scale: 0.92, autoAlpha: 0, duration: 1.4, ease: 'expo.out' });
-    gsap.from('.hero-note', { autoAlpha: 0, x: (i) => (i === 1 ? 30 : -30), duration: 1, ease: 'power3.out', stagger: 0.15, delay: 0.5 });
-    gsap.to('.hero-camera', {
-      yPercent: 12,
-      ease: 'none',
-      scrollTrigger: { trigger: '.hero-camera', start: 'top 30%', end: 'bottom top', scrub: true },
+      onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.12, overwrite: true }),
     });
 
     // Compteurs des chiffres clés

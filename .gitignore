@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # Fichiers de travail volumineux non versionnés
 me/video-for-frame.mp4
+
+# Images extraites de la vidéo (sources ; les versions web sont dans public/frames)
+me/frames/
