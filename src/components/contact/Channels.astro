@@ -1,5 +1,5 @@
 ---
-import { CONTACT, instagramUrl, mailtoUrl, tiktokUrl, whatsappUrl } from '../../data/contact';
+import { breakableHandle, CONTACT, instagramUrl, mailtoUrl, tiktokUrl, whatsappUrl } from '../../data/contact';
 
 const link = `group bg-surface-warm p-space-lg flex flex-col justify-between gap-space-lg shadow-lg transition-all duration-300 hover:bg-surface-raised hover:-translate-y-1 focus-visible:outline focus-visible:outline-primary`;
 const iconBox = 'w-12 h-12 rounded-DEFAULT bg-surface-container flex items-center justify-center text-primary';
@@ -63,7 +63,7 @@ const iconHover = 'group-hover:bg-primary-container group-hover:text-on-primary 
     </a>
 
     <!-- Instagram personnel -->
-    <a class={link} href={instagramUrl(CONTACT.instagramPerso)} target="_blank" rel="noopener noreferrer" data-reveal>
+    <a class={link} href={instagramUrl(CONTACT.instagram)} target="_blank" rel="noopener noreferrer" data-reveal>
       <div class="flex flex-col gap-space-sm">
         <div class="flex items-center justify-between">
           <div class:list={[iconBox, iconHover]}><span class="material-symbols-outlined text-2xl">photo_camera</span></div>
@@ -71,7 +71,7 @@ const iconHover = 'group-hover:bg-primary-container group-hover:text-on-primary 
         </div>
         <div class="flex flex-col gap-space-xs mt-2">
           <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Regard personnel &amp; coulisses</span>
-          <span class="font-title-md text-title-md text-text-ivory font-bold tracking-wider">@{CONTACT.instagramPerso}</span>
+          <span class="font-title-md text-title-md text-text-ivory font-bold tracking-wider" set:html={breakableHandle(CONTACT.instagram)} />
           <span class="font-body-sm text-body-sm text-on-surface-variant">Publications éditoriales, carnets de route &amp; vision artistique</span>
         </div>
       </div>

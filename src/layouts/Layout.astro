@@ -39,7 +39,7 @@ const jsonLd = {
   founder: { '@type': 'Person', name: 'Olivier Kouassi', jobTitle: 'Photographe auteur & directeur artistique' },
   areaServed: CONTACT.cities.map((name) => ({ '@type': 'City', name })),
   address: { '@type': 'PostalAddress', addressLocality: CONTACT.cities[0], addressCountry: 'CI' },
-  sameAs: [instagramUrl(CONTACT.instagramPerso), instagramUrl(CONTACT.instagramStudio), tiktokUrl(CONTACT.tiktok)],
+  sameAs: [instagramUrl(CONTACT.instagram), tiktokUrl(CONTACT.tiktok)],
 };
 
 // Uniquement les icônes utilisées (liste triée exigée par Google Fonts) : police ~10× plus légère

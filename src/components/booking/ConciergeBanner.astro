@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import emblem from '../../assets/overxp-emblem.png';
-import { CITIES, CONTACT, instagramUrl, whatsappUrl } from '../../data/contact';
+import { breakableHandle, CITIES, CONTACT, instagramUrl, whatsappUrl } from '../../data/contact';
 ---
 
 <section class="w-full bg-surface-raised py-16 px-margin md:px-margin-tablet lg:px-margin-desktop">
@@ -52,8 +52,8 @@ import { CITIES, CONTACT, instagramUrl, whatsappUrl } from '../../data/contact';
         </div>
         <div class="my-space-lg w-full flex flex-col items-start lg:items-end">
           <span class="font-label-technical text-label-technical text-outline tracking-[0.3em] uppercase block mb-1">Compte officiel</span>
-          <a class="font-headline-md text-headline-sm md:text-headline-md text-gold-light hover:text-studio-white transition-colors font-bold inline-flex items-center gap-2 break-all" href={instagramUrl(CONTACT.instagramPerso)} target="_blank" rel="noopener noreferrer">
-            <span>@{CONTACT.instagramPerso}</span>
+          <a class="font-headline-md text-title-md sm:text-headline-sm lg:text-headline-md text-gold-light hover:text-studio-white transition-colors font-bold inline-flex items-center gap-2" href={instagramUrl(CONTACT.instagram)} target="_blank" rel="noopener noreferrer">
+            <span set:html={breakableHandle(CONTACT.instagram)} />
             <span class="material-symbols-outlined text-xl">open_in_new</span>
           </a>
           <p class="font-body-sm text-body-sm text-on-surface-variant mt-2 max-w-xs">Archives visuelles, making-of des séances et rétrospectives d'expositions.</p>

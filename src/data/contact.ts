@@ -1,16 +1,15 @@
 /**
  * Coordonnées d'OverXP — source unique pour la page Contact, le footer et les liens pré-remplis.
  *
- * ⚠️ À REMPLACER : les valeurs ci-dessous viennent de la maquette Stitch (fictives).
+ * ⚠️ L'e-mail est encore fictif (maquette Stitch) : à remplacer.
  */
 export const CONTACT = {
   /** Numéro WhatsApp au format international, chiffres uniquement (utilisé pour wa.me) */
-  whatsapp: '2250748001200',
-  phoneDisplay: '+225 07 48 00 12 00',
+  whatsapp: '2250103580486',
+  phoneDisplay: '+225 01 03 58 04 86',
   email: 'olivier@overxp.ci',
-  instagramPerso: 'olivierkouassi',
-  instagramStudio: 'overxp.officiel',
-  tiktok: 'overxp',
+  instagram: 'olivier_kouassi_photography',
+  tiktok: 'olivierkouassi01',
   /** Villes où OverXP est représenté (ordre d'affichage) */
   cities: ['Abidjan', 'Bouaké'],
   country: "Côte d'Ivoire",
@@ -20,7 +19,10 @@ export const CONTACT = {
 /** « Abidjan & Bouaké » */
 export const CITIES = CONTACT.cities.join(' & ');
 
-export const instagramUrl = (handle: string) => `https://instagram.com/${handle}`;
+export const instagramUrl = (handle: string) => `https://www.instagram.com/${handle}/`;
+/** Pseudo coupable proprement : retour à la ligne autorisé après chaque « _ » (à utiliser avec set:html) */
+export const breakableHandle = (handle: string) => `@${handle.replaceAll('_', '_<wbr>')}`;
+
 export const tiktokUrl = (handle: string) => `https://www.tiktok.com/@${handle}`;
 
 export const whatsappUrl = (text?: string) =>

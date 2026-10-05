@@ -50,7 +50,8 @@ npm run build    # sortie statique dans dist/
 - [x] Pas de formulaire (conforme à la maquette) : demandes de tirage via `?sujet=tirage&oeuvre=…`
       → bandeau avec message WhatsApp / e-mail pré-rédigé (sans backend)
 - [x] Coordonnées centralisées dans `src/data/contact.ts` (aussi utilisées par le footer)
-- [ ] **Renseigner les vraies coordonnées** (numéro WhatsApp, e-mail, Instagram, TikTok) — valeurs fictives
+- [x] Vraies coordonnées : WhatsApp +225 01 03 58 04 86, Instagram @olivier_kouassi_photography, TikTok @olivierkouassi01
+- [ ] **E-mail** encore fictif (`olivier@overxp.ci`) — utilisé par les boutons e-mail pré-remplis (tirages, réservation)
 
 ## 4. Réserver (`/reserver`) ✅
 
