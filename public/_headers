@@ -1,0 +1,8 @@
+# Cache navigateur (Cloudflare Workers / Pages)
+# Fichiers versionnés par Astro (nom contenant un hash) : cache permanent
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images de l'animation de l'appareil : 30 jours
+/frames/*
+  Cache-Control: public, max-age=2592000
