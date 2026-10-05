@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Fichiers de travail volumineux non versionnés
+me/video-for-frame.mp4

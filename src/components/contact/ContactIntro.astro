@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import portrait from '../../assets/home/olivier-kouassi.jpg';
+import { CONTACT } from '../../data/contact';
 
 const badges = [
   { label: 'Clair-obscur ivoirien', color: 'text-text-ivory' },
@@ -16,7 +17,7 @@ const badges = [
       <span class="inline-block w-2 h-2 bg-primary rounded-full animate-pulse"></span>
       <span class="font-label-technical text-label-technical tracking-[0.35em] text-primary uppercase">REC [00:42:19:14] · Direct line</span>
     </div>
-    <span class="font-label-timecode text-label-timecode tracking-[0.25em] text-on-surface-variant uppercase">Abidjan (Cocody / Grand-Bassam) · International</span>
+    <span class="font-label-timecode text-label-timecode tracking-[0.25em] text-on-surface-variant uppercase">{CONTACT.cities.join(' · ')} · International</span>
   </div>
   <div class="inline-flex items-center gap-space-xs">
     <span class="h-px w-10 bg-primary"></span>
@@ -100,8 +101,8 @@ const badges = [
         <span class="font-label-timecode text-label-timecode text-outline tracking-[0.2em] uppercase whitespace-nowrap">Sur rendez-vous</span>
       </div>
       <p class="font-body-sm text-body-sm text-text-ivory">
-        Cocody &amp; Grand-Bassam<br />
-        <span class="text-on-surface-variant">Abidjan, Côte d'Ivoire · Sessions nomades à l'international</span>
+        {CONTACT.cities.join(' · ')}<br />
+        <span class="text-on-surface-variant">Côte d'Ivoire · Sessions nomades à l'international</span>
       </p>
       <div class="pt-space-xs flex items-center justify-between gap-space-sm text-outline">
         <span class="font-label-timecode text-label-timecode tracking-[0.2em]">RÉCEPTION PRIVÉE UNIQUEMENT</span>

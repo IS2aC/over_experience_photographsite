@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import emblem from '../../assets/overxp-emblem.png';
 import nikon from '../../assets/home/nikon-over-explodeview.png';
+import { CITIES } from '../../data/contact';
 
 const annotations = [
   { n: '01', title: 'La lumière', text: 'Prisme optique & capteur plein format calibré.', short: 'Prisme optique & capteur plein format.', meta: 'EXIF REF: 50MM · F/1.2 S · 1/8000S', color: 'primary' },
@@ -28,7 +29,7 @@ const accent = {
         <div class="flex items-center gap-space-sm">
           <span class="inline-block w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
           <span class="font-label-technical text-label-technical tracking-[0.35em] text-surface-container-highest uppercase font-bold">
-            Olivier Kouassi · Photographe auteur · Abidjan
+            Olivier Kouassi · Photographe auteur · {CITIES}
           </span>
         </div>
         <span class="font-label-timecode text-label-timecode text-outline tracking-[0.25em] uppercase">

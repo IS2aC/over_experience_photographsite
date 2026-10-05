@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import emblem from '../assets/overxp-emblem.png';
 import { NAV } from '../data/nav';
-import { CONTACT, instagramUrl } from '../data/contact';
+import { CITIES, CONTACT, instagramUrl } from '../data/contact';
 
 const year = new Date().getFullYear();
 ---
@@ -47,7 +47,7 @@ const year = new Date().getFullYear();
             <span class="material-symbols-outlined text-lg">mail</span>
           </a>
         </div>
-        <span class="font-label-timecode text-label-timecode text-outline tracking-[0.2em]">REC [00:26:04:18] · ABIDJAN, CÔTE D'IVOIRE</span>
+        <span class="font-label-timecode text-label-timecode text-outline tracking-[0.2em]">REC [00:26:04:18] · {CITIES.toUpperCase()}, CÔTE D'IVOIRE</span>
       </div>
     </div>
 

@@ -53,10 +53,17 @@ npm run build    # sortie statique dans dist/
 - [ ] **Renseigner les vraies coordonnées** (numéro WhatsApp, e-mail, comptes Instagram) — valeurs Stitch fictives
 - [ ] Valider les horaires « studio ouvert » (8h–20h, heure d'Abidjan)
 
-## 4. Réserver (`/reserver`)
+## 4. Réserver (`/reserver`) ✅
 
-- [ ] Intégration de la maquette (sélection de prestation, date, infos)
-- [ ] Envoi sans backend (même service que Contact) ou embed Cal.com / Calendly
+- [x] Hero « Capturons vos moments avec nous » + barre HUD
+- [x] 6 prestations signature : cliquer une carte pré-sélectionne le formulaire (et `?prestation=<id>`)
+- [x] Formulaire en 3 étapes (identité, logistique, vision) avec validation, dates passées bloquées, anti-spam
+- [x] Envoi sans backend : dossier rédigé → WhatsApp / e-mail pré-remplis
+- [x] Option service de formulaire via `PUBLIC_BOOKING_ENDPOINT` (Formspree / Web3Forms, voir `.env.example`)
+- [x] Bandeau conciergerie (WhatsApp, bureau, Instagram)
+- [x] Visuel « Book with us » remplacé : l'affiche de la maquette appartient à « Louis Photography » (marque et n° +234 d'un tiers)
+- [ ] Choisir : rester en WhatsApp/e-mail, ou brancher Formspree / Web3Forms (compte gratuit à créer)
+- [ ] Valider prestations, lieux et formats de restitution
 
 ## 5. Finitions & mise en ligne
 

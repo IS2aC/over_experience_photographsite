@@ -10,9 +10,14 @@ export const CONTACT = {
   email: 'olivier@overxp.ci',
   instagramPerso: 'olivierkouassi',
   instagramStudio: 'overxp.officiel',
-  city: "Abidjan, Côte d'Ivoire",
+  /** Villes où OverXP est représenté (ordre d'affichage) */
+  cities: ['Abidjan', 'Bouaké'],
+  country: "Côte d'Ivoire",
   timeZone: 'Africa/Abidjan',
 } as const;
+
+/** « Abidjan & Bouaké » */
+export const CITIES = CONTACT.cities.join(' & ');
 
 export const instagramUrl = (handle: string) => `https://instagram.com/${handle}`;
 

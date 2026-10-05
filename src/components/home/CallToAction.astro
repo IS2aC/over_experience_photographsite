@@ -1,9 +1,10 @@
 ---
 import { Image } from 'astro:assets';
 import emblem from '../../assets/overxp-emblem.png';
+import { CONTACT } from '../../data/contact';
 
 const infos = [
-  { icon: 'location_on', text: 'Plateau & Cocody · Abidjan' },
+  { icon: 'location_on', text: CONTACT.cities.join(' · ') },
   { icon: 'schedule', text: 'Réservations ouvertes 2026/2027' },
   { icon: 'flight_takeoff', text: 'Déplacements internationaux' },
 ];

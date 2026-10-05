@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import emblem from '../assets/overxp-emblem.png';
 import { NAV, isActive } from '../data/nav';
+import { CITIES } from '../data/contact';
 
 const { pathname } = Astro.url;
 ---
@@ -94,7 +95,7 @@ const { pathname } = Astro.url;
         >
           Réserver une séance
         </a>
-        <span class="font-label-timecode text-label-timecode text-on-surface-variant uppercase tracking-[0.2em]">Directeur Visuel &amp; Photographe · Abidjan</span>
+        <span class="font-label-timecode text-label-timecode text-on-surface-variant uppercase tracking-[0.2em]">Directeur visuel &amp; photographe · {CITIES}</span>
       </div>
     </div>
     <div class="border-t border-border-gold-subtle pt-space-md">

@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import portrait from '../../assets/home/olivier-kouassi.jpg';
+import { CITIES } from '../../data/contact';
 ---
 
 <section class="relative w-full bg-surface-container-lowest text-text-ivory py-space-2xl px-margin md:px-margin-tablet lg:px-margin-desktop overflow-hidden border-t border-border-gold-subtle scroll-mt-20" id="manifeste">
@@ -30,7 +31,7 @@ import portrait from '../../assets/home/olivier-kouassi.jpg';
         <div class="flex flex-col">
           <span class="font-title-md text-title-md text-text-ivory font-bold">Olivier Kouassi</span>
           <span class="font-label-timecode text-label-timecode text-primary tracking-[0.2em] uppercase">Directeur artistique &amp; fondateur</span>
-          <span class="font-label-timecode text-[11px] text-outline tracking-wider uppercase">Ambassadeur officiel · Abidjan</span>
+          <span class="font-label-timecode text-[11px] text-outline tracking-wider uppercase">Ambassadeur officiel · {CITIES}</span>
         </div>
       </div>
       <div class="md:col-span-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md bg-surface-warm/80 p-space-md rounded-DEFAULT border border-border-gold-subtle">

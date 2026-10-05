@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import emblem from '../../assets/overxp-emblem.png';
+import { CITIES, CONTACT, instagramUrl, whatsappUrl } from '../../data/contact';
+---
+
+<section class="w-full bg-surface-raised py-16 px-margin md:px-margin-tablet lg:px-margin-desktop">
+  <div class="max-w-7xl mx-auto rounded-xl overflow-hidden bg-surface-container-lowest shadow-2xl" data-reveal>
+    <div class="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+      <!-- Ton gauche : conciergerie -->
+      <div class="lg:col-span-7 p-space-lg md:p-space-xl flex flex-col justify-between gap-space-lg">
+        <div>
+          <div class="flex items-center gap-space-sm mb-space-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+            <span class="font-label-technical text-label-technical text-primary tracking-[0.35em] uppercase">Canaux de conciergerie privée</span>
+          </div>
+          <h2 class="font-headline-md text-headline-sm md:text-headline-md text-text-ivory font-bold uppercase">Réservation immédiate &amp; échanges directs</h2>
+          <p class="mt-space-sm font-body-md text-body-md text-on-surface-variant max-w-xl">
+            Pour les événements urgents, les couvertures protocolaires ou les campagnes à délais restreints, communiquez directement avec Olivier Kouassi.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+          <a class="p-space-md rounded-DEFAULT bg-surface-warm hover:bg-surface-container transition-colors flex items-center gap-space-md" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+              <span class="material-symbols-outlined text-2xl">chat</span>
+            </div>
+            <div class="min-w-0">
+              <span class="font-label-technical text-label-technical text-gold-light tracking-widest block uppercase">WhatsApp direct</span>
+              <span class="font-title-md text-title-md text-text-ivory font-bold truncate block">{CONTACT.phoneDisplay}</span>
+            </div>
+          </a>
+          <div class="p-space-md rounded-DEFAULT bg-surface-warm flex items-center gap-space-md">
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+              <span class="material-symbols-outlined text-2xl">apartment</span>
+            </div>
+            <div class="min-w-0">
+              <span class="font-label-technical text-label-technical text-gold-light tracking-widest block uppercase">Bureaux Côte d'Ivoire</span>
+              <span class="font-title-md text-title-md text-text-ivory font-bold truncate block">{CITIES}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ton droit : emblème + compte officiel -->
+      <div class="lg:col-span-5 bg-gradient-to-br from-surface-warm via-surface-raised to-surface-container-low p-space-lg md:p-space-xl flex flex-col justify-between items-start lg:items-end text-left lg:text-right">
+        <div class="w-full flex lg:justify-end items-center gap-space-sm">
+          <Image src={emblem} alt="" width={112} height={112} class="w-14 h-14 shrink-0 object-contain drop-shadow-[0_0_12px_rgba(212,162,76,0.4)]" />
+          <div>
+            <span class="font-label-technical text-label-technical text-text-ivory tracking-[0.35em] block uppercase font-bold">OVERXP</span>
+            <span class="font-label-timecode text-label-timecode text-primary tracking-[0.2em] block uppercase">Atelier Olivier Kouassi</span>
+          </div>
+        </div>
+        <div class="my-space-lg w-full flex flex-col items-start lg:items-end">
+          <span class="font-label-technical text-label-technical text-outline tracking-[0.3em] uppercase block mb-1">Compte officiel</span>
+          <a class="font-headline-md text-headline-sm md:text-headline-md text-gold-light hover:text-studio-white transition-colors font-bold inline-flex items-center gap-2 break-all" href={instagramUrl(CONTACT.instagramPerso)} target="_blank" rel="noopener noreferrer">
+            <span>@{CONTACT.instagramPerso}</span>
+            <span class="material-symbols-outlined text-xl">open_in_new</span>
+          </a>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mt-2 max-w-xs">Archives visuelles, making-of des séances et rétrospectives d'expositions.</p>
+        </div>
+        <div class="w-full flex items-center justify-between lg:justify-end gap-space-md pt-space-sm">
+          <span class="font-label-timecode text-label-timecode text-outline tracking-[0.25em]">CODE D'ACCRÉDITATION : OK-2026-XP</span>
+          <div class="w-3 h-3 rounded-full bg-primary/80"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,5 +1,5 @@
 ---
-import { CONTACT, instagramUrl, mailtoUrl, whatsappUrl } from '../../data/contact';
+import { CITIES, CONTACT, instagramUrl, mailtoUrl, whatsappUrl } from '../../data/contact';
 
 const card = 'group bg-surface-warm p-space-lg flex flex-col justify-between gap-space-lg shadow-lg';
 const link = `${card} transition-all duration-300 hover:bg-surface-raised hover:-translate-y-1 focus-visible:outline focus-visible:outline-primary`;
@@ -124,11 +124,11 @@ const iconHover = 'group-hover:bg-primary-container group-hover:text-on-primary 
       <div class="flex flex-col gap-space-sm">
         <div class="flex items-center justify-between">
           <div class={iconBox}><span class="material-symbols-outlined text-2xl">apartment</span></div>
-          <span class="font-label-timecode text-label-timecode text-on-surface-variant tracking-[0.2em] uppercase">Abidjan</span>
+          <span class="font-label-timecode text-label-timecode text-on-surface-variant tracking-[0.2em] uppercase">Côte d'Ivoire</span>
         </div>
         <div class="flex flex-col gap-space-xs mt-2">
-          <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Bureau &amp; galerie privée</span>
-          <span class="font-title-md text-title-md text-text-ivory font-bold tracking-wider">{CONTACT.city}</span>
+          <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Bureaux &amp; galerie privée</span>
+          <span class="font-title-md text-title-md text-text-ivory font-bold tracking-wider">{CITIES}</span>
           <span class="font-body-sm text-body-sm text-on-surface-variant">Accès réservé aux collectionneurs et partenaires, sur invitation.</span>
         </div>
       </div>
@@ -147,7 +147,7 @@ const iconHover = 'group-hover:bg-primary-container group-hover:text-on-primary 
         </div>
         <div class="flex flex-col gap-space-xs mt-2">
           <span class="font-label-technical text-label-technical text-gold-light tracking-[0.3em] uppercase">Fuseau horaire studio</span>
-          <span class="font-title-md text-title-md text-text-ivory font-bold tracking-wider">GMT / UTC +0 (Abidjan)</span>
+          <span class="font-title-md text-title-md text-text-ivory font-bold tracking-wider">GMT / UTC +0 (Côte d'Ivoire)</span>
           <p class="font-body-sm text-body-sm text-on-surface-variant">
             Heure locale : <time id="studio-clock" class="tabular-nums text-text-ivory">--:--:--</time> · <span id="studio-status">Studio</span>
           </p>

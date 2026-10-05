@@ -4,6 +4,7 @@ import Loader from '../components/Loader.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import '../styles/global.css';
+import { CITIES } from '../data/contact';
 
 interface Props {
   title: string;
@@ -12,7 +13,7 @@ interface Props {
 
 const {
   title,
-  description = 'OverXP — Olivier Kouassi, photographe auteur à Abidjan. Portrait, haute couture et mémoires visuelles panafricaines.',
+  description = `OverXP — Olivier Kouassi, photographe auteur à ${CITIES.replace(' & ', ' et ')} (Côte d'Ivoire). Portrait, haute couture et mémoires visuelles panafricaines.`,
 } = Astro.props;
 ---
 

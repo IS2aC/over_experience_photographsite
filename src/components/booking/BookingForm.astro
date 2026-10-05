@@ -1,0 +1,147 @@
+---
+import { FORMATS, LOCATIONS, SERVICES, SPECIAL_ORDER } from '../../data/booking';
+
+const field =
+  'w-full px-4 py-3.5 rounded-DEFAULT bg-surface text-text-ivory placeholder:text-outline/60 text-sm border border-text-ivory/15 focus:outline-none focus:border-primary user-invalid:border-error transition-colors';
+const label = 'font-label-technical text-label-technical text-text-ivory tracking-widest uppercase';
+const step = 'font-label-technical text-label-technical text-primary tracking-[0.25em] uppercase';
+---
+
+<section class="w-full bg-surface-container-low py-20 px-margin md:px-margin-tablet lg:px-margin-desktop relative scroll-mt-20" id="formulaire">
+  <div class="max-w-5xl mx-auto flex flex-col items-center">
+    <div class="text-center max-w-2xl mb-12" data-reveal>
+      <span class="font-label-technical text-label-technical text-primary tracking-[0.35em] uppercase block">Dossier de soumission d'art</span>
+      <h2 class="mt-2 font-headline-lg text-headline-lg-mobile md:text-headline-md text-text-ivory uppercase">Formulaire de réservation</h2>
+      <p class="mt-2 font-body-md text-body-md text-on-surface-variant">
+        Renseignez vos coordonnées et les détails de votre vision. Nous orchestrons votre calendrier avec précision.
+      </p>
+    </div>
+
+    <form class="w-full bg-surface-raised p-space-lg md:p-space-xl rounded-xl shadow-2xl flex flex-col gap-space-lg [&_:is(input,select,textarea)]:scroll-mt-32" id="booking-form" novalidate data-reveal>
+      <!-- Anti-spam (champ invisible pour les humains) -->
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+
+      <!-- 01 · Identité -->
+      <fieldset>
+        <legend class={`${step} mb-space-md`}>01 // Identité du commanditaire</legend>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+          <div class="flex flex-col gap-1.5">
+            <label class={label} for="client-name">Nom complet &amp; maison / organisation *</label>
+            <input class={field} id="client-name" name="nom" autocomplete="name" placeholder="Ex. Awa Diop — Maison Diop" required type="text" />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class={label} for="client-email">Courriel *</label>
+            <input class={field} id="client-email" name="email" autocomplete="email" placeholder="vous@exemple.com" required type="email" />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class={label} for="client-phone">Téléphone &amp; WhatsApp *</label>
+            <input class={field} id="client-phone" name="telephone" autocomplete="tel" placeholder="+225 07 00 00 00 00" required type="tel" pattern="\+?[\d\s.\-\(\)]{8,}" title="Numéro au format international, ex. +225 07 00 00 00 00" />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class={label} for="prestation">Type de prestation souhaitée *</label>
+            <select class={field} id="prestation" name="prestation" required>
+              <option disabled selected value="">Sélectionnez une catégorie…</option>
+              {SERVICES.map((s) => <option value={s.id}>{s.title}</option>)}
+              <option value={SPECIAL_ORDER.id}>{SPECIAL_ORDER.title}</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- 02 · Logistique -->
+      <fieldset class="pt-space-md">
+        <legend class={`${step} mb-space-md`}>02 // Logistique &amp; restitution fine art</legend>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+          <div class="flex flex-col gap-1.5">
+            <label class={label} for="shooting-date">Date souhaitée *</label>
+            <input class={`${field} [color-scheme:dark]`} id="shooting-date" name="date" required type="date" />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class={label} for="shooting-location">Lieu envisagé *</label>
+            <select class={field} id="shooting-location" name="lieu" required>
+              {LOCATIONS.map((l) => <option value={l.id}>{l.label}</option>)}
+            </select>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class={label} for="deliverable-format">Format de restitution *</label>
+            <select class={field} id="deliverable-format" name="format" required>
+              {FORMATS.map((f) => <option value={f.id}>{f.label}</option>)}
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- 03 · Vision -->
+      <fieldset class="pt-space-md">
+        <legend class={`${step} mb-space-md`}>03 // Vision, énergie &amp; ambiance souhaitées</legend>
+        <div class="flex flex-col gap-1.5">
+          <label class={label} for="client-vision">Racontez-nous l'histoire ou l'émotion à immortaliser</label>
+          <textarea
+            class={`${field} py-3 resize-y min-h-32`}
+            id="client-vision"
+            name="vision"
+            rows="4"
+            placeholder="Ex. une ambiance feutrée inspirée des portraits princiers akan, mêlée de noir et or, mettant en lumière le tissage traditionnel…"></textarea>
+        </div>
+      </fieldset>
+
+      <div class="flex items-start gap-space-sm pt-space-xs">
+        <input class="mt-1 w-4 h-4 shrink-0 accent-primary-container" id="terms-check" name="consentement" required type="checkbox" />
+        <label class="font-body-sm text-body-sm text-on-surface-variant cursor-pointer" for="terms-check">
+          J'autorise OverXP à utiliser ces informations pour étudier ma demande et me recontacter. Elles restent strictement confidentielles. *
+        </label>
+      </div>
+
+      <p id="booking-invalid" hidden role="alert" class="font-body-sm text-body-sm text-error text-center">
+        Merci de compléter les champs obligatoires (*) signalés en rouge.
+      </p>
+
+      <div class="flex flex-col items-center gap-space-md pt-space-md" id="booking-actions">
+        <button
+          type="submit"
+          class="w-full md:w-auto px-space-2xl py-4 rounded-DEFAULT bg-gold-gradient text-on-primary font-label-technical text-label-technical tracking-[0.3em] uppercase font-bold shadow-xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,162,76,0.45)] hover:scale-[1.02] active:scale-[0.99] disabled:opacity-60 disabled:pointer-events-none flex items-center justify-center gap-space-sm"
+        >
+          <span data-label>Réserver votre expérience</span>
+          <span class="material-symbols-outlined text-base" data-icon>arrow_forward</span>
+        </button>
+        <div class="flex items-center gap-space-xs text-outline">
+          <span class="material-symbols-outlined text-sm text-primary">schedule</span>
+          <span class="font-label-timecode text-label-timecode tracking-[0.2em] uppercase text-center">Étude de faisabilité et devis sous 24 à 48 h ouvrées</span>
+        </div>
+      </div>
+
+      <!-- Confirmation : demande envoyée (service de formulaire configuré) -->
+      <div hidden id="booking-sent" role="status" class="p-space-md rounded-DEFAULT bg-surface-warm text-center shadow-lg border border-border-gold-subtle">
+        <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/20 text-primary mb-space-xs">
+          <span class="material-symbols-outlined text-2xl">done_all</span>
+        </div>
+        <h3 class="font-title-md text-title-md text-gold-light font-bold uppercase">Demande transmise</h3>
+        <p class="font-body-sm text-body-sm text-on-surface-variant max-w-lg mx-auto mt-1">
+          Merci pour votre confiance. Le studio d'Olivier Kouassi a bien reçu votre dossier et revient vers vous sous 24 à 48 h ouvrées avec une proposition.
+        </p>
+      </div>
+
+      <!-- Finalisation : envoi via WhatsApp / e-mail (sans service de formulaire, ou en cas d'erreur) -->
+      <div hidden id="booking-handoff" role="status" class="p-space-md md:p-space-lg rounded-DEFAULT bg-surface-warm text-center shadow-lg border border-border-gold-active">
+        <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/20 text-primary mb-space-xs">
+          <span class="material-symbols-outlined text-2xl">forward_to_inbox</span>
+        </div>
+        <h3 class="font-title-md text-title-md text-gold-light font-bold uppercase">Votre dossier est prêt</h3>
+        <p class="font-body-sm text-body-sm text-on-surface-variant max-w-lg mx-auto mt-1" id="booking-handoff-text">
+          Il ne reste qu'à l'envoyer : choisissez votre canal, le message est déjà rédigé avec toutes vos informations.
+        </p>
+        <div class="mt-space-md flex flex-col sm:flex-row items-center justify-center gap-space-sm">
+          <a id="booking-whatsapp" target="_blank" rel="noopener noreferrer" href="#" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-gold-gradient text-on-primary font-label-technical text-label-technical uppercase tracking-[0.25em] font-bold rounded-DEFAULT hover:shadow-[0_0_20px_rgba(212,162,76,0.35)] transition-all">
+            <span class="material-symbols-outlined text-base">chat</span> Envoyer sur WhatsApp
+          </a>
+          <a id="booking-email" href="#" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 border border-border-gold-subtle text-text-ivory font-label-technical text-label-technical uppercase tracking-[0.25em] rounded-DEFAULT hover:border-primary hover:text-primary transition-all">
+            <span class="material-symbols-outlined text-base">mail</span> Envoyer par e-mail
+          </a>
+        </div>
+        <button type="button" id="booking-edit" class="mt-space-md font-label-technical text-label-technical text-outline hover:text-primary uppercase tracking-[0.25em] transition-colors">
+          ← Modifier ma demande
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
