@@ -1,0 +1,10 @@
+{
+  // Déploiement Cloudflare Workers (fichiers statiques) : publie le dossier dist/ produit par `npm run build`.
+  // Le nom doit correspondre au projet créé dans le tableau de bord Cloudflare.
+  "name": "over-experience-photographsite",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}
