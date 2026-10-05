@@ -3,8 +3,8 @@ export const SERVICES = [
   {
     id: 'mariages',
     icon: 'favorite',
-    title: 'Mariages & cérémonies traditionnelles',
-    text: "Dots solennelles, fastes dynastiques, parures royales akan et archives familiales d'exception.",
+    title: 'Mariages & cérémonies',
+    text: "Cérémonies, réceptions et instants d'émotion, des préparatifs au dernier regard.",
     meta: 'Couverture complète',
   },
   {
@@ -18,13 +18,13 @@ export const SERVICES = [
     id: 'diplomes',
     icon: 'school',
     title: 'Séances diplômes & familles',
-    text: 'Consécration académique, portraits de lignée et célébrations multigénérationnelles immortalisées avec noblesse.',
+    text: 'Consécration académique, portraits de famille et célébrations multigénérationnelles, immortalisées avec élégance.',
     meta: 'Session sur mesure',
   },
   {
     id: 'exterieur',
     icon: 'landscape',
-    title: 'Photographie extérieur & patrimoine',
+    title: 'Photographie extérieur & architecture',
     text: "Lagunes d'Abidjan, cité historique de Grand-Bassam, rivages d'Assinie et architectures modernes.",
     meta: 'Extérieur / site dédié',
   },

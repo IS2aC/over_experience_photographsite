@@ -5,7 +5,7 @@ export const CATEGORIES = {
   mode: 'Mode',
   architecture: 'Architecture',
   urbain: 'Urbain',
-  culture: 'Culture',
+  patrimoine: 'Patrimoine',
   evenements: 'Événements',
   produits: 'Produits',
 } as const;

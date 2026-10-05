@@ -1,4 +1,5 @@
 ---
+import { BRAND } from '../../data/brand';
 import { Image } from 'astro:assets';
 import emblem from '../../assets/overxp-emblem.png';
 import { CITIES } from '../../data/contact';
@@ -6,7 +7,7 @@ import { CITIES } from '../../data/contact';
 const annotations = [
   { n: '01', title: 'La lumière', text: 'Prisme optique & capteur plein format calibré.', short: 'Prisme optique & capteur plein format.', meta: 'EXIF REF: 50MM · F/1.2 S · 1/8000S', color: 'primary' },
   { n: '02', title: 'Le regard', text: 'Diaphragme de haute précision et focus sélectif.', short: 'Diaphragme de précision chirurgicale.', meta: 'ANAMORPHIC DEPTH FIELD', color: 'secondary-container' },
-  { n: '03', title: 'La culture', text: 'Héritage Akan, chromaticité terracotta & géométrie sacrée.', short: 'Héritage Akan & géométrie sacrée.', color: 'primary-container' },
+  { n: '03', title: 'Le beau', text: 'La recherche du beau, du moindre détail à la composition.', short: 'La quête du beau, pixel par pixel.', color: 'primary-container' },
 ] as const;
 
 const accent = {
@@ -57,7 +58,7 @@ const accent = {
           Over Experience
         </h1>
         <p class="font-label-technical text-label-technical md:text-sm text-primary-container tracking-[0.35em] uppercase font-bold mt-space-xs">
-          Ingénierie visuelle &amp; art photographique
+          {BRAND.tagline} · Ingénierie visuelle &amp; art photographique
         </p>
       </div>
 

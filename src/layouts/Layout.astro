@@ -6,6 +6,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 import '../styles/global.css';
 import montserrat from '@fontsource-variable/montserrat/files/montserrat-latin-wght-normal.woff2?url';
 import { CITIES, CONTACT, instagramUrl, tiktokUrl } from '../data/contact';
+import { BRAND } from '../data/brand';
 
 interface Props {
   title: string;
@@ -16,7 +17,7 @@ interface Props {
 
 const {
   title,
-  description = `OverXP — Olivier Kouassi, photographe auteur à ${CITIES.replace(' & ', ' et ')} (Côte d'Ivoire). Portrait, haute couture et mémoires visuelles panafricaines.`,
+  description = `OverXP — Olivier Kouassi, photographe auteur à ${CITIES.replace(' & ', ' et ')} (Côte d'Ivoire). ${BRAND.tagline} : portrait, mode, mariages et événements, la recherche du beau dans chaque pixel.`,
   image = '/og-image.jpg',
 } = Astro.props;
 
@@ -28,6 +29,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'OverXP — Olivier Kouassi',
+  slogan: BRAND.tagline,
   description,
   url: Astro.site?.href,
   image: imageUrl.href,

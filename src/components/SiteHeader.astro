@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import emblem from '../assets/overxp-emblem.png';
 import { NAV, isActive } from '../data/nav';
 import { CITIES } from '../data/contact';
+import { BRAND } from '../data/brand';
 
 const { pathname } = Astro.url;
 ---
@@ -99,7 +100,7 @@ const { pathname } = Astro.url;
       </div>
     </div>
     <div class="border-t border-border-gold-subtle pt-space-md">
-      <p class="font-label-timecode text-label-timecode text-outline uppercase tracking-[0.25em]">Every pixel, a tribute to our culture</p>
+      <p class="font-label-timecode text-label-timecode text-outline uppercase tracking-[0.25em]">{BRAND.tagline} · {BRAND.signature}</p>
     </div>
   </div>
 </header>

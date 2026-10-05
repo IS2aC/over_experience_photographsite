@@ -1,11 +1,12 @@
 ---
+import { BRAND } from '../../data/brand';
 import { Image } from 'astro:assets';
 import portrait from '../../assets/home/olivier-kouassi.jpg';
 import { CONTACT } from '../../data/contact';
 
 const badges = [
-  { label: 'Clair-obscur ivoirien', color: 'text-text-ivory' },
-  { label: 'Pagne kita & ébène', color: 'text-primary' },
+  { label: 'Clair-obscur maîtrisé', color: 'text-text-ivory' },
+  { label: BRAND.tagline, color: 'text-primary' },
   { label: 'Direction haute joaillerie', color: 'text-gold-light' },
 ];
 ---
@@ -28,7 +29,7 @@ const badges = [
       L'auteur &amp; <span class="text-primary italic font-medium">le regard</span>
     </h1>
     <p class="font-title-md text-title-md text-on-surface-variant italic max-w-2xl font-light">
-      « Chaque rencontre façonne une œuvre intemporelle. La lumière ne capture pas seulement les traits, elle révèle l'âme de nos héritages. »
+      « Chaque rencontre façonne une œuvre intemporelle. La lumière ne capture pas seulement les traits, elle révèle ce qu'il y a de plus beau en chacun. »
     </p>
   </div>
 </header>
@@ -78,13 +79,13 @@ const badges = [
         <span class="material-symbols-outlined text-primary text-xl">camera</span>
         <span class="font-label-technical text-label-technical text-primary tracking-[0.3em] uppercase">Manifeste &amp; démarche</span>
       </div>
-      <h2 class="font-headline-sm text-headline-sm text-text-ivory uppercase">L'alchimie de l'ébène et de l'or</h2>
+      <h2 class="font-headline-sm text-headline-sm text-text-ivory uppercase">{BRAND.tagline}</h2>
       <div class="flex flex-col gap-space-sm font-body-md text-body-md text-on-surface-variant">
         <p>
-          Sous l'égide d'Olivier Kouassi, la photographie dépasse la simple capture pour s'ériger en mémoire sacrée. Pionnier d'un clair-obscur résolument contemporain, il modèle les peaux ébène avec une douceur sculpturale et un éclat souverain.
+          Sous l'égide d'Olivier Kouassi, la photographie dépasse la simple capture pour devenir une quête : celle du beau. Pionnier d'un clair-obscur résolument contemporain, il modèle chaque visage avec une douceur sculpturale et un éclat juste.
         </p>
         <p>
-          Chaque composition fait dialoguer la tradition royale ouest-africaine — textures vivantes du pagne kita, reflets solaires de l'or baoulé — avec la rigueur architecturale de la haute couture internationale.
+          Chaque composition se construit pixel par pixel — la justesse d'une lumière, l'équilibre d'une ligne, la vérité d'un regard — avec la rigueur architecturale de la haute couture internationale.
         </p>
       </div>
       <div class="pt-space-xs flex flex-wrap gap-2">

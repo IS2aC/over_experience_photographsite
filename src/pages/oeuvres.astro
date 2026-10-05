@@ -11,7 +11,7 @@ const volumes = (await getCollection('oeuvres')).sort((a, b) => a.data.order - b
 const categories = CATEGORY_KEYS.filter((c) => volumes.some((v) => v.data.categories.includes(c)));
 ---
 
-<Layout title="Œuvres · Olivier Kouassi | OverXP" description="La bibliothèque visuelle d'Olivier Kouassi : séries photographiques, architecture, culture et portraits — Abidjan, Côte d'Ivoire.">
+<Layout title="Œuvres · Olivier Kouassi | OverXP" description="La bibliothèque visuelle d'Olivier Kouassi : séries photographiques, architecture, mode et portraits. La recherche du beau, à Abidjan et Bouaké.">
   <GalleryHeader categories={categories} />
   <Bookshelf volumes={volumes} />
   <Archives volumes={volumes} />

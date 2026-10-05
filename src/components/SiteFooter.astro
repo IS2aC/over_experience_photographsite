@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import emblem from '../assets/overxp-emblem.png';
 import { NAV } from '../data/nav';
+import { BRAND } from '../data/brand';
 import { CITIES, CONTACT, instagramUrl } from '../data/contact';
 
 const year = new Date().getFullYear();
@@ -15,9 +16,9 @@ const year = new Date().getFullYear();
           <Image src={emblem} alt="" width={96} height={96} class="w-12 h-12 shrink-0 object-contain drop-shadow-[0_0_8px_rgba(212,162,76,0.3)]" />
           <span class="font-label-technical text-label-technical text-text-ivory tracking-[0.35em] uppercase font-bold">OVERXP</span>
         </div>
-        <p class="font-headline-sm text-headline-sm text-text-ivory font-light italic max-w-md">« Every pixel, a tribute to our culture »</p>
+        <p class="font-headline-sm text-headline-sm text-text-ivory font-light italic max-w-md">« {BRAND.signature} »</p>
         <p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">
-          Direction photographique, haute couture et mémoires visuelles panafricaines orchestrées par Olivier Kouassi.
+          {BRAND.pitch}
         </p>
       </div>
 
